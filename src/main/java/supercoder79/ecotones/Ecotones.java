@@ -22,6 +22,7 @@ import supercoder79.ecotones.entity.EcotonesEntities;
 import supercoder79.ecotones.gen.DataGen;
 import supercoder79.ecotones.items.EcotonesItemGroups;
 import supercoder79.ecotones.items.EcotonesItems;
+import supercoder79.ecotones.recipe.EcotonesRecipes;
 import supercoder79.ecotones.screen.EcotonesScreenHandlers;
 import supercoder79.ecotones.util.*;
 import supercoder79.ecotones.util.compat.*;
@@ -101,6 +102,8 @@ public final class Ecotones implements ModInitializer {
 		if (isModLoaded("aurorasdeco")) {
 			AurorasDecoCompat.init();
 		}
+
+		EcotonesRecipes.init();
 
 		EcotonesBiomes.init();
 

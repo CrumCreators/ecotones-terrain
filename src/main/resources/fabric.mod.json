@@ -22,6 +22,9 @@
     ],
     "client": [
       "supercoder79.ecotones.EcotonesClient"
+    ],
+    "emi": [
+      "supercoder79.ecotones.recipe.memyimi.EcotonesEmiPlugin"
     ]
   },
   "mixins": [
