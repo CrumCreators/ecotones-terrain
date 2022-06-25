@@ -8,8 +8,6 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import supercoder79.ecotones.blocks.CattailBlock;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.features.config.CattailFeatureConfig;
 
 import java.util.Random;
@@ -47,9 +45,10 @@ public class CattailFeature extends EcotonesFeature<CattailFeatureConfig> {
 
             boolean waterlogged = world.getFluidState(mutable).isIn(FluidTags.WATER);
 
-            if (world.getBlockState(mutable).getMaterial().isReplaceable() && CattailBlock.PLANTABLE.contains(world.getBlockState(mutable.down()).getBlock())) {
-                world.setBlockState(mutable, config.state.with(CattailBlock.WATERLOGGED, waterlogged), 3);
-            }
+            //TODO Replace Cattails with seagrass
+            //if (world.getBlockState(mutable).getMaterial().isReplaceable() && CattailBlock.PLANTABLE.contains(world.getBlockState(mutable.down()).getBlock())) {
+            //    world.setBlockState(mutable, config.state.with(CattailBlock.WATERLOGGED, waterlogged), 3);
+            //}
         }
 
         return true;

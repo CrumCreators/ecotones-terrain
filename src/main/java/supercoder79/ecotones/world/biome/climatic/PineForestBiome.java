@@ -20,7 +20,6 @@ import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.api.Climate;
 import supercoder79.ecotones.api.SimpleTreeDecorationData;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.features.EcotonesFeatures;
@@ -138,12 +137,6 @@ public class PineForestBiome extends EcotonesBiomeBuilder {
                 EcotonesFeatures.PODZOL.configure(FeatureConfig.DEFAULT)
                         .spreadHorizontally()
                         .repeat(2));
-
-        this.addFeature(GenerationStep.Feature.RAW_GENERATION,
-                EcotonesFeatures.GROUND_PATCH.configure(new PatchFeatureConfig(EcotonesBlocks.PEAT_BLOCK.getDefaultState(), Blocks.GRASS_BLOCK, UniformIntProvider.create(1, 4)))
-                        .spreadHorizontally()
-                        .repeat(3)
-                        .applyChance(48));
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                 EcotonesFeatures.RANDOM_PATCH.configure(FeatureConfigHolder.MUSHROOMS)

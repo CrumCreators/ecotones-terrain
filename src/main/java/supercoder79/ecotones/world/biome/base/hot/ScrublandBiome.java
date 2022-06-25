@@ -20,8 +20,6 @@ import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.api.Climate;
 import supercoder79.ecotones.api.SimpleTreeDecorationData;
-import supercoder79.ecotones.client.particle.EcotonesParticles;
-import supercoder79.ecotones.util.compat.LambdaFoxesCompat;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.decorator.*;
@@ -57,7 +55,6 @@ public class ScrublandBiome extends EcotonesBiomeBuilder {
         this.scale(scale);
         this.temperature(1.9F);
         this.downfall(0.2F);
-        this.particleConfig(new BiomeParticleConfig(EcotonesParticles.SAND, 0.00125F));
 
         this.hilliness(hilliness);
         this.volatility(volatility);
@@ -161,9 +158,5 @@ public class ScrublandBiome extends EcotonesBiomeBuilder {
 
         BiomeHelper.addDefaultSpawns(this.getSpawnSettings());
         BiomeHelper.addDefaultFeatures(this);
-
-        if (LambdaFoxesCompat.isEnabled()) {
-            this.addSpawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 8, 2, 4));
-        }
     }
 }

@@ -1,6 +1,7 @@
 package supercoder79.ecotones.world.features;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.block.Blocks;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
@@ -8,7 +9,6 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.features.config.DuckweedFeatureConfig;
 
 import java.util.Random;
@@ -38,7 +38,7 @@ public class DuckweedFeature extends EcotonesFeature<DuckweedFeatureConfig> {
             mutable.set(dx, y, dz);
 
             if (world.getBlockState(mutable).getMaterial().isReplaceable() && world.getFluidState(mutable.down()).isIn(FluidTags.WATER)) {
-                world.setBlockState(mutable, EcotonesBlocks.DUCKWEED.getDefaultState(), 3);
+                world.setBlockState(mutable, Blocks.SMALL_DRIPLEAF.getDefaultState(), 3);
             }
         }
 

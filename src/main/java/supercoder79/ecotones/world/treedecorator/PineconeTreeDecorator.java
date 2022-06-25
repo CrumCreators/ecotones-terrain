@@ -8,7 +8,6 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 
 import java.util.List;
 import java.util.Random;
@@ -30,7 +29,8 @@ public class PineconeTreeDecorator extends TreeDecorator {
                 if (random.nextInt(rarity) == 0) {
                     BlockPos downPos = pos.down();
                     if (world.testBlockState(downPos, s -> s.isAir())) {
-                        replacer.accept(downPos, EcotonesBlocks.PINECONE.getDefaultState());
+                        //TODO Replace with pinecone head
+                        //replacer.accept(downPos, EcotonesBlocks.PINECONE.getDefaultState());
                     }
                 }
             }

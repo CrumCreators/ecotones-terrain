@@ -2,17 +2,17 @@ package supercoder79.ecotones.world.surface;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.world.surface.system.TernarySurfaceConfig;
 
 import java.util.Random;
 
 public class RedRockSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig> {
-    private static final TernarySurfaceConfig RED_ROCK_CONFIG = new TernarySurfaceConfig(EcotonesBlocks.RED_ROCK.getDefaultState(), EcotonesBlocks.RED_ROCK.getDefaultState(), EcotonesBlocks.RED_ROCK.getDefaultState());
+    private static final TernarySurfaceConfig RED_ROCK_CONFIG = new TernarySurfaceConfig(Blocks.SMOOTH_RED_SANDSTONE.getDefaultState(), Blocks.SMOOTH_RED_SANDSTONE.getDefaultState(), Blocks.SMOOTH_RED_SANDSTONE.getDefaultState());
 
     public RedRockSurfaceBuilder(Codec<TernarySurfaceConfig> codec) {
         super(codec);

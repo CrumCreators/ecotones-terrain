@@ -18,9 +18,6 @@ import net.minecraft.world.gen.stateprovider.SimpleBlockStateProvider;
 import supercoder79.ecotones.world.decorator.*;
 import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.api.*;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
-import supercoder79.ecotones.util.compat.FloralisiaCompat;
-import supercoder79.ecotones.util.state.DeferredBlockStateProvider;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.biome.technical.MountainLakeBiome;
@@ -204,21 +201,6 @@ public class MontaneFieldsBiome extends EcotonesBiomeBuilder {
         this.addFeature(GenerationStep.Feature.TOP_LAYER_MODIFICATION,
                 EcotonesFeatures.DUCK_NEST.configure(DefaultFeatureConfig.INSTANCE)
                         .decorate(EcotonesDecorators.DUCK_NEST.configure(new ShrubDecoratorConfig(0.1))));
-
-        this.addFeature(GenerationStep.Feature.RAW_GENERATION,
-                EcotonesFeatures.GROUND_PATCH.configure(new PatchFeatureConfig(EcotonesBlocks.PEAT_BLOCK.getDefaultState(), Blocks.GRASS_BLOCK, UniformIntProvider.create(1, 4)))
-                        .spreadHorizontally()
-                        .repeat(3)
-                        .applyChance(72));
-
-        if (FloralisiaCompat.isEnabled()) {
-            this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                    EcotonesFeatures.RANDOM_PATCH.configure(new RandomPatchFeatureConfig.Builder(new DeferredBlockStateProvider(FloralisiaCompat.cymbidium())).tries(12).build())
-                            .decorate(new Spread32Decorator())
-                            .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
-                            .spreadHorizontally()
-                            .repeat(2));
-        }
 
         BiomeHelper.addDefaultSpawns(this.getSpawnSettings());
         BiomeHelper.addDefaultFeatures(this);

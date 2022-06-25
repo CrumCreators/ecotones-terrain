@@ -6,14 +6,14 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.world.surface.system.TernarySurfaceConfig;
 
 import java.util.Random;
 
 public class GreenSpiresSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig> {
-    private static final TernarySurfaceConfig GEYSER_CONFIG = new TernarySurfaceConfig(EcotonesBlocks.GEYSER.getDefaultState(), Blocks.DIRT.getDefaultState(), Blocks.GRAVEL.getDefaultState());
+    //TODO Make server side geyser
+    private static final TernarySurfaceConfig GEYSER_CONFIG = new TernarySurfaceConfig(Blocks.STONE.getDefaultState(), Blocks.DIRT.getDefaultState(), Blocks.GRAVEL.getDefaultState());
 
     public GreenSpiresSurfaceBuilder(Codec<TernarySurfaceConfig> codec) {
         super(codec);

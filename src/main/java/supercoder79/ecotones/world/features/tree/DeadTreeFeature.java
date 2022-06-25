@@ -14,7 +14,6 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.TreeFeature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.minecraft.world.gen.foliage.FoliagePlacer;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.features.EcotonesFeature;
 import supercoder79.ecotones.world.features.config.SimpleTreeFeatureConfig;
 
@@ -38,7 +37,7 @@ public class DeadTreeFeature extends EcotonesFeature<SimpleTreeFeatureConfig> {
 		BlockState downState = world.getBlockState(pos.down());
 		if (!(world.getBlockState(pos).isAir() && (downState.isOf(Blocks.SAND) || downState.isOf(Blocks.GRASS_BLOCK)))) {
 			// Spawn 1/2 as often in red rock biomes, TODO: extract this out
-			if (downState.isOf(EcotonesBlocks.RED_ROCK) && world.getBlockState(pos).isAir()) {
+			if (downState.isOf(Blocks.SMOOTH_RED_SANDSTONE) && world.getBlockState(pos).isAir()) {
 				if (random.nextBoolean()) {
 					return false;
 				}
@@ -50,7 +49,7 @@ public class DeadTreeFeature extends EcotonesFeature<SimpleTreeFeatureConfig> {
 		int trunkHeight = random.nextInt(8) + 9;
 		int scaledTrunkHeight = MathHelper.floor((double) trunkHeight * 0.618D);
 
-		int branchCount = Math.min(1, MathHelper.floor(1.382D + Math.pow(1.0D * (double) trunkHeight / 13.0D, 2.0D)));
+		int branchCount = Math.min(1, MathHelper.floor(1.382D + Math.pow((double) trunkHeight / 13.0D, 2.0D)));
 
 		int maxExtent = pos.getY() + scaledTrunkHeight;
 		int yProgress = trunkHeight - 5;

@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "fruiting=false": { "model": "ecotones:block/small_cactus/small_cactus" },
-    "fruiting=true": { "model": "ecotones:block/small_cactus/small_cactus_fruiting" }
-  }
-}

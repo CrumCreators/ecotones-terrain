@@ -21,7 +21,6 @@ import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.api.Climate;
 import supercoder79.ecotones.api.SimpleTreeDecorationData;
 import supercoder79.ecotones.api.TreeType;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.decorator.EcotonesDecorators;
@@ -104,29 +103,10 @@ public class MangroveSwampBiome extends EcotonesBiomeBuilder {
                 EcotonesFeatures.DUCK_NEST.configure(DefaultFeatureConfig.INSTANCE)
                         .decorate(EcotonesDecorators.DUCK_NEST.configure(new ShrubDecoratorConfig(0.2))));
 
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.CATTAIL.configure(new CattailFeatureConfig(EcotonesBlocks.WATERGRASS.getDefaultState(), UniformIntProvider.create(64, 96), true, UniformIntProvider.create(10, 14)))
-                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
-                        .spreadHorizontally()
-                        .applyChance(4)
-                        .repeat(3));
-
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.CATTAIL.configure(new CattailFeatureConfig(EcotonesBlocks.WATERGRASS.getDefaultState(), UniformIntProvider.create(12, 16), true, UniformIntProvider.create(10, 14)))
-                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
-                        .spreadHorizontally()
-                        .applyChance(2)
-                        .repeat(4));
-
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, EcotonesConfiguredFeature.wrap(Feature.SEAGRASS, (new ProbabilityConfig(0.6f)))
                 .decorate(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG))
                 .spreadHorizontally()
                 .repeat(64));
-
-        this.addFeature(GenerationStep.Feature.RAW_GENERATION,
-                EcotonesFeatures.GROUND_PATCH.configure(new PatchFeatureConfig(EcotonesBlocks.PEAT_BLOCK.getDefaultState(), Blocks.GRASS_BLOCK, UniformIntProvider.create(1, 4)))
-                        .spreadHorizontally()
-                        .applyChance(3));
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                 EcotonesFeatures.DUCKWEED.configure(new DuckweedFeatureConfig(UniformIntProvider.create(64, 96), UniformIntProvider.create(10, 14)))

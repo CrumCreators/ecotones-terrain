@@ -2,9 +2,9 @@ package supercoder79.ecotones.world.surface;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.world.surface.system.TernarySurfaceConfig;
 
@@ -19,7 +19,8 @@ public class PeatSwampSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig
     @Override
     public void generate(Random random, Chunk chunk, Biome biome, int x, int z, int height, double noise, BlockState defaultBlock, BlockState defaultFluid, int seaLevel, int start, long seed, TernarySurfaceConfig surfaceBlocks) {
         if (noise > 0.3 && noise < 1.2) {
-            SurfaceBuilder.DEFAULT.generate(random, chunk, biome, x, z, height, noise, defaultBlock, defaultFluid, seaLevel, start, seed, new TernarySurfaceConfig(EcotonesBlocks.PEAT_BLOCK.getDefaultState(), EcotonesBlocks.PEAT_BLOCK.getDefaultState(), EcotonesBlocks.PEAT_BLOCK.getDefaultState()));
+            //TODO Make peat block mud
+            SurfaceBuilder.DEFAULT.generate(random, chunk, biome, x, z, height, noise, defaultBlock, defaultFluid, seaLevel, start, seed, new TernarySurfaceConfig(Blocks.CLAY.getDefaultState(), Blocks.CLAY.getDefaultState(), Blocks.CLAY.getDefaultState()));
         } else {
             SurfaceBuilder.DEFAULT.generate(random, chunk, biome, x, z, height, noise, defaultBlock, defaultFluid, seaLevel, start, seed, SurfaceBuilder.GRASS_CONFIG);
         }

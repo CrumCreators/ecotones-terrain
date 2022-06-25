@@ -18,7 +18,6 @@ import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.api.Climate;
 import supercoder79.ecotones.api.SimpleTreeDecorationData;
 import supercoder79.ecotones.api.TreeType;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.features.EcotonesFeatures;
@@ -139,20 +138,6 @@ public class SparseForestBiome extends EcotonesBiomeBuilder {
                         .decorate(EcotonesDecorators.TREE_DECORATOR.configure(TreeType.RARE_DARK_OAK.decorationData)));
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.CATTAIL.configure(new CattailFeatureConfig(EcotonesBlocks.WATERGRASS.getDefaultState(), UniformIntProvider.create(64, 96), true, UniformIntProvider.create(10, 14)))
-                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
-                        .spreadHorizontally()
-                        .applyChance(4)
-                        .repeat(2));
-
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.CATTAIL.configure(new CattailFeatureConfig(EcotonesBlocks.WATERGRASS.getDefaultState(), UniformIntProvider.create(12, 16), true, UniformIntProvider.create(6, 8)))
-                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
-                        .spreadHorizontally()
-                        .applyChance(2)
-                        .repeat(4));
-
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                 EcotonesFeatures.DUCKWEED.configure(new DuckweedFeatureConfig(UniformIntProvider.create(64, 96), UniformIntProvider.create(10, 14)))
                         .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
                         .spreadHorizontally()
@@ -177,12 +162,6 @@ public class SparseForestBiome extends EcotonesBiomeBuilder {
                         .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
                         .spreadHorizontally()
                         .applyChance(8));
-
-        this.addFeature(GenerationStep.Feature.RAW_GENERATION,
-                EcotonesFeatures.GROUND_PATCH.configure(new PatchFeatureConfig(EcotonesBlocks.PEAT_BLOCK.getDefaultState(), Blocks.GRASS_BLOCK, UniformIntProvider.create(1, 4)))
-                        .spreadHorizontally()
-                        .repeat(3)
-                        .applyChance(peatChance));
 
         this.addFeature(GenerationStep.Feature.TOP_LAYER_MODIFICATION,
                 EcotonesFeatures.PODZOL.configure(FeatureConfig.DEFAULT)

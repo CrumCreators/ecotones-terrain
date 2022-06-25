@@ -1,7 +1,0 @@
-{
-    "parent": "ecotones:block/extends/tinted_normal",
-    "textures": {
-        "normal": "ecotones:block/wildflowers/flower",
-        "tinted": "ecotones:block/wildflowers/stem"
-    }
-}

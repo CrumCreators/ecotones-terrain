@@ -12,8 +12,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.world.biome.climatic.SparseTundraBiome;
 
-import java.util.Random;
-
 @Mixin(Biome.class)
 public abstract class MixinBiome {
     private static final ChunkRandom RANDOM = new ChunkRandom(new SimpleRandom(0));

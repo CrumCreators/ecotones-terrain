@@ -15,7 +15,6 @@ import net.minecraft.world.gen.feature.ConfiguredStructureFeatures;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.api.SimpleTreeDecorationData;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.decorator.CountExtraDecoratorConfig;
@@ -56,7 +55,8 @@ public class WastelandBiome extends EcotonesBiomeBuilder {
 
 
     protected WastelandBiome(float treeChance, float depth, float scale, double hilliness, double volatility) {
-        this.surfaceBuilder(EcotonesSurfaces.WASTELAND_BUILDER, new TernarySurfaceConfig(EcotonesBlocks.DRIED_DIRT.getDefaultState(), EcotonesBlocks.DRIED_DIRT.getDefaultState(), Blocks.GRAVEL.getDefaultState()));
+        //Changed Dried Dirt to Coarse Dirt
+        this.surfaceBuilder(EcotonesSurfaces.WASTELAND_BUILDER, new TernarySurfaceConfig(Blocks.COARSE_DIRT.getDefaultState(), Blocks.COARSE_DIRT.getDefaultState(), Blocks.GRAVEL.getDefaultState()));
 
         this.depth(depth);
         this.scale(scale);

@@ -8,7 +8,6 @@ import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.features.EcotonesFeature;
 import supercoder79.ecotones.world.features.config.RockFeatureConfig;
 
@@ -114,7 +113,7 @@ public class RockFeature extends EcotonesFeature<RockFeatureConfig> {
             }
 
             world.setBlockState(pos, placementState, 4);
-        } else if (state.getBlock() == EcotonesBlocks.MALACHITE || state.getBlock() == EcotonesBlocks.PYRITE || state.getBlock() == EcotonesBlocks.SPARSE_GOLD_ORE) {
+        } else if (state.getBlock() == Blocks.EMERALD_ORE || state.getBlock() == Blocks.COPPER_ORE || state.getBlock() == Blocks.GOLD_ORE) {
             BlockState placementState = state;
 
             if (random.nextInt(6) == 0) {

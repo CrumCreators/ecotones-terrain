@@ -18,7 +18,6 @@ import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.api.Climate;
 import supercoder79.ecotones.api.SimpleTreeDecorationData;
-import supercoder79.ecotones.client.particle.EcotonesParticles;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.decorator.ChanceDecoratorConfig;
@@ -60,7 +59,6 @@ public class ThornBrushBiome extends EcotonesBiomeBuilder {
         this.volatility(volatility);
         this.category(Biome.Category.SAVANNA);
 
-        this.particleConfig(new BiomeParticleConfig(EcotonesParticles.SAND, 0.001F));
         this.grassColor(0xc9c665);
 
 //        this.addStructureFeature(ConfiguredStructureFeatures.RUINED_PORTAL);

@@ -10,7 +10,6 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.features.EcotonesFeature;
 import supercoder79.ecotones.world.features.FeatureHelper;
 
@@ -48,9 +47,10 @@ public class GeyserPatchFeature extends EcotonesFeature<DefaultFeatureConfig> {
 
                     if (spawnInWater) {
                         world.setBlockState(local, Blocks.WATER.getDefaultState(), 3);
-                        world.setBlockState(local.down(), EcotonesBlocks.GEYSER.getDefaultState(), 3);
+                        //TODO Implement server side geyser
+                        world.setBlockState(local.down(), Blocks.STONE.getDefaultState(), 3);
                     } else {
-                        world.setBlockState(local, EcotonesBlocks.GEYSER.getDefaultState(), 3);
+                        world.setBlockState(local, Blocks.STONE.getDefaultState(), 3);
                     }
                 } else if (selection < 0.6) {
                     if (selection < 0.45) {
@@ -59,7 +59,7 @@ public class GeyserPatchFeature extends EcotonesFeature<DefaultFeatureConfig> {
                         world.setBlockState(local, Blocks.COBBLESTONE.getDefaultState(), 3);
                     }
                 } else {
-                    world.setBlockState(local, EcotonesBlocks.GEYSER.getDefaultState(), 3);
+                    world.setBlockState(local,Blocks.STONE.getDefaultState(), 3);
                 }
             }
         }

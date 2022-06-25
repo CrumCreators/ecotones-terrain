@@ -1,15 +1,12 @@
 package supercoder79.ecotones.world.features;
 
 import com.mojang.serialization.Codec;
-import net.minecraft.block.Blocks;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
-import net.minecraft.world.chunk.ChunkSection;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import supercoder79.ecotones.util.noise.OctaveNoiseSampler;
 import supercoder79.ecotones.util.noise.OpenSimplexNoise;
@@ -132,8 +129,8 @@ public class OreVeinFeature extends EcotonesFeature<DefaultFeatureConfig> {
     }
 
     private static boolean isVein(double veinA, double veinB) {
-        double d = Math.abs(1.0D * veinA) - 0.08;
-        double e = Math.abs(1.0D * veinB) - 0.08;
+        double d = Math.abs(veinA) - 0.08;
+        double e = Math.abs(veinB) - 0.08;
         return Math.max(d, e) < 0.0D;
     }
 

@@ -23,7 +23,6 @@ import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.api.Climate;
 import supercoder79.ecotones.api.SimpleTreeDecorationData;
 import supercoder79.ecotones.api.TreeType;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.decorator.EcotonesDecorators;
@@ -108,12 +107,6 @@ public class SunflowerPlainsBiome extends EcotonesBiomeBuilder {
                         .applyChance(48)
                         .spreadHorizontally()
                         .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING)));
-
-        this.addFeature(GenerationStep.Feature.RAW_GENERATION,
-                EcotonesFeatures.GROUND_PATCH.configure(new PatchFeatureConfig(EcotonesBlocks.PEAT_BLOCK.getDefaultState(), Blocks.GRASS_BLOCK, UniformIntProvider.create(1, 4)))
-                        .spreadHorizontally()
-                        .repeat(3)
-                        .applyChance(72));
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                 EcotonesFeatures.CATTAIL.configure(new CattailFeatureConfig(UniformIntProvider.create(64, 96), true, UniformIntProvider.create(10, 14)))

@@ -18,9 +18,6 @@ import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.api.Climate;
 import supercoder79.ecotones.api.SimpleTreeDecorationData;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
-import supercoder79.ecotones.util.state.DeferredBlockStateProvider;
-import supercoder79.ecotones.util.compat.FloralisiaCompat;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.decorator.EcotonesDecorators;
@@ -134,29 +131,6 @@ public class RockyMountainBiome extends EcotonesBiomeBuilder {
                         .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
                         .spreadHorizontally()
                         .applyChance(4));
-
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.CATTAIL.configure(new CattailFeatureConfig(EcotonesBlocks.WATERGRASS.getDefaultState(), UniformIntProvider.create(64, 96), true, UniformIntProvider.create(10, 14)))
-                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
-                        .spreadHorizontally()
-                        .applyChance(4)
-                        .repeat(2));
-
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.CATTAIL.configure(new CattailFeatureConfig(EcotonesBlocks.WATERGRASS.getDefaultState(), UniformIntProvider.create(12, 16), true, UniformIntProvider.create(10, 14)))
-                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
-                        .spreadHorizontally()
-                        .applyChance(2)
-                        .repeat(6));
-
-        if (FloralisiaCompat.isEnabled()) {
-            this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                    EcotonesFeatures.RANDOM_PATCH.configure(new RandomPatchFeatureConfig.Builder(new DeferredBlockStateProvider(FloralisiaCompat.cymbidium())).tries(12).build())
-                            .decorate(new Spread32Decorator())
-                            .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
-                            .spreadHorizontally()
-                            .applyChance(3));
-        }
 
         BiomeHelper.addDefaultSpawns(this.getSpawnSettings());
     }

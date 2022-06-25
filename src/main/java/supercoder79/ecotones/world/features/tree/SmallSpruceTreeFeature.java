@@ -10,7 +10,6 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.util.BoxHelper;
 import supercoder79.ecotones.util.Shapes;
 import supercoder79.ecotones.world.features.EcotonesFeature;
@@ -31,7 +30,7 @@ import java.util.function.BiConsumer;
 public class SmallSpruceTreeFeature extends EcotonesFeature<SimpleTreeFeatureConfig> {
     private static final PineconeTreeDecorator PINECONES = new PineconeTreeDecorator(2);
     private static final LichenTreeDecorator LICHEN = new LichenTreeDecorator(3);
-    private static final LeafPileTreeDecorator LEAF_PILES = new LeafPileTreeDecorator(EcotonesBlocks.SPRUCE_LEAF_PILE.getDefaultState(), 8, 3);
+    private static final LeafPileTreeDecorator LEAF_PILES = new LeafPileTreeDecorator(Blocks.MOSS_CARPET.getDefaultState(), 8, 3);
 
     public SmallSpruceTreeFeature() {
         super(SimpleTreeFeatureConfig.CODEC);

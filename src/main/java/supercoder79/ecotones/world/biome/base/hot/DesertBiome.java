@@ -26,9 +26,6 @@ import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.api.Climate;
 import supercoder79.ecotones.api.SimpleTreeDecorationData;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
-import supercoder79.ecotones.client.particle.EcotonesParticles;
-import supercoder79.ecotones.util.compat.LambdaFoxesCompat;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.decorator.*;
@@ -63,7 +60,6 @@ public class DesertBiome extends EcotonesBiomeBuilder {
         this.scale(scale);
         this.temperature(2F);
         this.downfall(0F);
-        this.particleConfig(new BiomeParticleConfig(EcotonesParticles.SAND, 0.00325F));
         this.category(Biome.Category.DESERT);
 
         this.hilliness(hilliness);
@@ -128,9 +124,5 @@ public class DesertBiome extends EcotonesBiomeBuilder {
 
         BiomeHelper.addDefaultSpawns(this.getSpawnSettings());
         BiomeHelper.addDefaultFeatures(this);
-
-        if (LambdaFoxesCompat.isEnabled()) {
-            this.addSpawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FOX, 8, 2, 4));
-        }
     }
 }

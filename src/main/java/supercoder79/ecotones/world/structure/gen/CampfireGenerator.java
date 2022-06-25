@@ -26,10 +26,8 @@ import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import supercoder79.ecotones.items.EcotonesItems;
 import supercoder79.ecotones.util.BoxHelper;
 import supercoder79.ecotones.util.CampfireLogHelper;
-import supercoder79.ecotones.util.book.*;
 import supercoder79.ecotones.world.features.FeatureHelper;
 import supercoder79.ecotones.world.structure.EcotonesStructurePieces;
 
@@ -99,7 +97,7 @@ public class CampfireGenerator {
 
                             if (be != null) {
                                 int idx = random.nextInt(27);
-                                be.setStack(idx, generateBook(random));
+                                //TODO Put loot in chest
                                 chest.set(idx);
 
                                 for (int i = 0; i < foodStacks; i++) {
@@ -129,27 +127,6 @@ public class CampfireGenerator {
                     }
                 }
             }
-        }
-
-        private ItemStack generateBook(Random random) {
-            ItemStack stack = new ItemStack(EcotonesItems.ECOTONES_BOOK);
-            NbtCompound tag = new NbtCompound();
-
-            BookGenerator generator = BookList.get(random);
-            tag.putString("title", TitleGenerator.generate(generator, random));
-            tag.putString("author", AuthorGenerator.generate(random));
-
-            NbtList pages = new NbtList();
-            List<String> pageList = PageGenerator.generate(generator, random);
-
-            for (String page : pageList) {
-                pages.add(NbtString.of(page));
-            }
-
-            tag.put("pages", pages);
-            stack.setNbt(tag);
-
-            return stack;
         }
     }
 }

@@ -25,7 +25,6 @@ import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.api.Climate;
 import supercoder79.ecotones.api.TreeType;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.decorator.EcotonesDecorators;
@@ -132,12 +131,6 @@ public class DeadSpruceForestBiome extends EcotonesBiomeBuilder {
                 EcotonesFeatures.PODZOL.configure(FeatureConfig.DEFAULT)
                         .spreadHorizontally()
                         .repeat(2));
-
-        this.addFeature(GenerationStep.Feature.RAW_GENERATION,
-                EcotonesFeatures.GROUND_PATCH.configure(new PatchFeatureConfig(EcotonesBlocks.PEAT_BLOCK.getDefaultState(), Blocks.GRASS_BLOCK, UniformIntProvider.create(1, 4)))
-                        .spreadHorizontally()
-                        .repeat(3)
-                        .applyChance(24));
 
         DefaultBiomeFeatures.addForestFlowers(this.getGenerationSettings());
         DefaultBiomeFeatures.addMossyRocks(this.getGenerationSettings());

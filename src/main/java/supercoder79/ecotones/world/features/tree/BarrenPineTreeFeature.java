@@ -11,7 +11,6 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.util.BoxHelper;
 import supercoder79.ecotones.world.data.DataHolder;
 import supercoder79.ecotones.world.data.DefaultDataHolder;
@@ -28,7 +27,7 @@ import java.util.function.BiConsumer;
 public class BarrenPineTreeFeature extends EcotonesFeature<SimpleTreeFeatureConfig> {
     private static final PineconeTreeDecorator PINECONES = new PineconeTreeDecorator(2);
 
-    private static final LeafPileTreeDecorator LEAF_PILES = new LeafPileTreeDecorator(EcotonesBlocks.SPRUCE_LEAF_PILE.getDefaultState(), 6, 3);
+    private static final LeafPileTreeDecorator LEAF_PILES = new LeafPileTreeDecorator(Blocks.MOSS_CARPET.getDefaultState(), 6, 3);
 
     public BarrenPineTreeFeature(Codec<SimpleTreeFeatureConfig> configCodec) {
         super(configCodec);

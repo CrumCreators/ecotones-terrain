@@ -10,7 +10,6 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.minecraft.world.gen.random.ChunkRandom;
 import net.minecraft.world.gen.random.SimpleRandom;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 
 import java.util.Random;
 
@@ -62,7 +61,7 @@ public class PhosphateDomeFeature extends EcotonesFeature<DefaultFeatureConfig> 
                         boolean isAir = world.getBlockState(local).isAir();
 
                         if (random.nextDouble() < chance) {
-                            world.setBlockState(local, EcotonesBlocks.PHOSPHATE_ORE.getDefaultState(), 3);
+                            world.setBlockState(local, Blocks.LAPIS_ORE.getDefaultState(), 3);
                         } else if (random.nextDouble() < 0.8 || isAir) {
                             world.setBlockState(local, Blocks.STONE.getDefaultState(), 3);
                         }

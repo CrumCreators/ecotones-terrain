@@ -4,8 +4,6 @@
   "compatibilityLevel": "JAVA_8",
   "plugin": "supercoder79.ecotones.asm.TransformerMixinPlugin",
   "mixins": [
-    "BlockStateProviderTypeAccessor",
-    "CriteriaAccessor",
     "FoliagePlacerTypeAccessor",
     "MixinBiome",
     "MixinBiomeSelectors",
@@ -24,18 +22,6 @@
     "TreeDecoratorTypeAccessor"
   ],
   "client": [
-    "client.EntityModelLayersAccessor",
-    "client.MixinBackgroundRenderer",
-    "client.MixinBiomeColors",
-    "client.MixinClientPlayNetworkHandler",
-    "client.MixinClientWorld",
-    "client.MixinDebugHud",
-    "client.MixinEntityModels",
-    "client.MixinHeldItemRenderer",
-    "client.MixinMinecraftClient",
-    "client.MixinWorldRenderer",
-    "client.MixinAdvancementPositioner",
-    "client.MixinAdvancementTab"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -21,7 +21,6 @@
       "supercoder79.ecotones.Ecotones"
     ],
     "client": [
-      "supercoder79.ecotones.EcotonesClient"
     ]
   },
   "mixins": [
@@ -36,7 +35,5 @@
     "minecraft": ">=1.16-"
   },
   "suggests": {
-    "traverse": "*",
-    "terrestria": "*"
   }
 }

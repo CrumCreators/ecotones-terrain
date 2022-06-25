@@ -12,7 +12,6 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.minecraft.world.gen.random.ChunkRandom;
 import net.minecraft.world.gen.random.SimpleRandom;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.features.config.PatchFeatureConfig;
 
 import java.util.Random;

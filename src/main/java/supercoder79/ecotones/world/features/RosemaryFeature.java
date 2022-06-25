@@ -2,6 +2,7 @@ package supercoder79.ecotones.world.features;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
@@ -9,8 +10,6 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
-import supercoder79.ecotones.blocks.RosemaryBlock;
 import supercoder79.ecotones.world.data.DataHolder;
 import supercoder79.ecotones.world.data.EcotonesData;
 
@@ -28,7 +27,7 @@ public class RosemaryFeature extends EcotonesFeature<DefaultFeatureConfig> {
         Random random = context.getRandom();
         ChunkGenerator generator = context.getGenerator();
 
-        BlockState state = EcotonesBlocks.ROSEMARY.getDefaultState();
+        BlockState state = Blocks.FERN.getDefaultState();
 
         int extra = 0;
         if (generator instanceof DataHolder) {
@@ -44,7 +43,8 @@ public class RosemaryFeature extends EcotonesFeature<DefaultFeatureConfig> {
             BlockPos local = new BlockPos(x, y, z);
 
             if (state.canPlaceAt(world, local) && world.getBlockState(local).isAir()) {
-                world.setBlockState(local, state.with(RosemaryBlock.FLOWERING, random.nextBoolean()), 3);
+                //I have no clue if this will work :P
+                world.setBlockState(local, Blocks.FERN.getDefaultState(), random.nextInt(), 3);
             }
         }
 

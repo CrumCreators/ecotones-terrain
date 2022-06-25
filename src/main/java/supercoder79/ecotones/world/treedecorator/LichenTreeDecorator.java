@@ -2,6 +2,7 @@ package supercoder79.ecotones.world.treedecorator;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.VineBlock;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
@@ -10,7 +11,6 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 
 import java.util.List;
 import java.util.Random;
@@ -39,7 +39,7 @@ public class LichenTreeDecorator extends TreeDecorator {
                 Direction dir = randomDirection(random);
                 if (world.testBlockState(pos.offset(dir), s -> s.isAir())) {
                     // Place lichen towards trunk- so get opposite and then place
-                    replacer.accept(pos.offset(dir), EcotonesBlocks.LICHEN.getDefaultState().with(VineBlock.FACING_PROPERTIES.get(dir.getOpposite()), true));
+                    replacer.accept(pos.offset(dir), Blocks.GLOW_LICHEN.getDefaultState().with(VineBlock.FACING_PROPERTIES.get(dir.getOpposite()), true));
                 }
             }
         }

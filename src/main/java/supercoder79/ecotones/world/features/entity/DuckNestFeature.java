@@ -1,7 +1,10 @@
 package supercoder79.ecotones.world.features.entity;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
+import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
@@ -10,10 +13,7 @@ import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.blocks.NestBlock;
-import supercoder79.ecotones.entity.DuckEntity;
-import supercoder79.ecotones.entity.EcotonesEntities;
 import supercoder79.ecotones.world.features.EcotonesFeature;
 
 import java.util.Random;
@@ -36,7 +36,7 @@ public class DuckNestFeature extends EcotonesFeature<DefaultFeatureConfig> {
 
         // TODO: entity simulation
         if (NestBlock.isValid(world.getBlockState(pos.down()).getBlock())) {
-            world.setBlockState(pos, EcotonesBlocks.NEST.getDefaultState(), 3);
+            world.setBlockState(pos, Blocks.DEAD_BRAIN_CORAL_FAN.getDefaultState(), 3);
 
             int duckCount = 1 + random.nextInt(3);
 
@@ -45,7 +45,7 @@ public class DuckNestFeature extends EcotonesFeature<DefaultFeatureConfig> {
                 int z = pos.getZ() + (random.nextInt(16) - random.nextInt(16));
                 int y = world.getTopY(Heightmap.Type.OCEAN_FLOOR_WG, x, z);
 
-                DuckEntity duck = new DuckEntity(EcotonesEntities.DUCK, world.toServerWorld());
+                ChickenEntity duck = new ChickenEntity(EntityType.CHICKEN, world.toServerWorld());
                 duck.refreshPositionAndAngles(x, y, z, 0, 0);
                 duck.initialize(world, world.getLocalDifficulty(pos), SpawnReason.CHUNK_GENERATION, null, null);
                 world.spawnEntity(duck);

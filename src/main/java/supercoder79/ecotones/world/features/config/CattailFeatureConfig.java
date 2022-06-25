@@ -3,9 +3,9 @@ package supercoder79.ecotones.world.features.config;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.util.math.intprovider.IntProvider;
 import net.minecraft.world.gen.feature.FeatureConfig;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.features.CattailFeature;
 
 public class CattailFeatureConfig implements FeatureConfig {
@@ -22,7 +22,7 @@ public class CattailFeatureConfig implements FeatureConfig {
     public final IntProvider spread;
 
     public CattailFeatureConfig(IntProvider count, boolean needsWater, IntProvider spread) {
-        this(EcotonesBlocks.CATTAIL.getDefaultState(), count, needsWater, spread);
+        this(Blocks.SEAGRASS.getDefaultState(), count, needsWater, spread);
     }
 
     public CattailFeatureConfig(BlockState state, IntProvider count, boolean needsWater, IntProvider spread) {

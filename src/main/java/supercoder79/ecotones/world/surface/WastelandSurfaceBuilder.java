@@ -5,14 +5,13 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.Chunk;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.world.surface.system.TernarySurfaceConfig;
 
 import java.util.Random;
 
 public class WastelandSurfaceBuilder extends SurfaceBuilder<TernarySurfaceConfig> {
-    private static final TernarySurfaceConfig WASTELAND_GRASS = new TernarySurfaceConfig(Blocks.GRASS_BLOCK.getDefaultState(), EcotonesBlocks.DRIED_DIRT.getDefaultState(), Blocks.GRAVEL.getDefaultState());
+    private static final TernarySurfaceConfig WASTELAND_GRASS = new TernarySurfaceConfig(Blocks.GRASS_BLOCK.getDefaultState(), Blocks.COARSE_DIRT.getDefaultState(), Blocks.GRAVEL.getDefaultState());
 
     public WastelandSurfaceBuilder(Codec<TernarySurfaceConfig> codec) {
         super(codec);

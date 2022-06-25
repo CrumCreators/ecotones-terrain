@@ -16,7 +16,6 @@ import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import supercoder79.ecotones.blocks.EcotonesBlocks;
 
 import java.util.Random;
 
@@ -132,7 +131,7 @@ public class SulfurousLakeFeature extends EcotonesFeature<SulfurousLakeFeature.C
                                     // Random check for sulfur ore
                                     BlockState toPlace = d;
                                     if (random.nextInt(6) == 0) {
-                                        toPlace = EcotonesBlocks.SULFUR_ORE.getDefaultState();
+                                        toPlace = Blocks.GOLD_ORE.getDefaultState();
                                     }
 
                                     structureWorldAccess.setBlockState(g, toPlace, Block.NOTIFY_LISTENERS);
@@ -154,7 +153,7 @@ public class SulfurousLakeFeature extends EcotonesFeature<SulfurousLakeFeature.C
                 BlockState state = structureWorldAccess.getBlockState(pos);
 
                 if (state.isIn(BlockTags.BASE_STONE_OVERWORLD)) {
-                    structureWorldAccess.setBlockState(pos, EcotonesBlocks.SULFUR_ORE.getDefaultState(), Block.NOTIFY_LISTENERS);
+                    structureWorldAccess.setBlockState(pos, Blocks.GOLD_ORE.getDefaultState(), Block.NOTIFY_LISTENERS);
                 }
             }
 
