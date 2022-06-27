@@ -21,6 +21,7 @@ import net.minecraft.world.gen.treedecorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.trunk.LargeOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.MegaJungleTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+import supercoder79.ecotones.blocks.HeadBlocks;
 import supercoder79.ecotones.world.features.foliage.PlusLeavesFoliagePlacer;
 import supercoder79.ecotones.world.features.foliage.SmallPineFoliagePlacer;
 import supercoder79.ecotones.world.features.mc.RandomPatchFeatureConfig;
@@ -138,7 +139,7 @@ public final class FeatureConfigHolder {
 
     public static final RandomPatchFeatureConfig DESERT_GRASS_CONFIG =
             new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
-                    .add(Blocks.SAND.getDefaultState(), 1)))
+                    .add(Blocks.GRASS.getDefaultState(), 1)))
                     .spreadX(7)
                     .spreadZ(7)
                     .tries(24).build();
@@ -154,8 +155,9 @@ public final class FeatureConfigHolder {
             .build();
 
     public static final RandomPatchFeatureConfig SMALL_CACTUS =
+            //TODO Make tiny cactus a head (done?)
             new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
-                    .add(Blocks.CACTUS.getDefaultState(), 1)))
+                    .add(HeadBlocks.SMALL_CACTUS.getDefaultState(), 1)))
                     .spreadX(7)
                     .spreadZ(7)
                     .tries(12).build();

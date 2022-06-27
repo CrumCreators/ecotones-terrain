@@ -1,8 +1,14 @@
 package supercoder79.ecotones.world.features;
 
 import com.mojang.serialization.Codec;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.tag.FluidTags;
+import net.minecraft.block.SmallDripleafBlock;
+import net.minecraft.block.enums.DoubleBlockHalf;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.state.property.Property;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
@@ -26,6 +32,7 @@ public class DuckweedFeature extends EcotonesFeature<DuckweedFeatureConfig> {
         ChunkGenerator generator = context.getGenerator();
         DuckweedFeatureConfig config = context.getConfig();
 
+
         int count = config.count.get(random);
         int spread = config.spread.get(random);
 
@@ -35,13 +42,13 @@ public class DuckweedFeature extends EcotonesFeature<DuckweedFeatureConfig> {
             int dz = random.nextInt(spread) - random.nextInt(spread) + pos.getZ();
             int y = world.getTopY(Heightmap.Type.WORLD_SURFACE_WG, dx, dz);
 
-            mutable.set(dx, y, dz);
+            mutable.set(dx, y- random.nextInt(2,4), dz);
 
-            if (world.getBlockState(mutable).getMaterial().isReplaceable() && world.getFluidState(mutable.down()).isIn(FluidTags.WATER)) {
-                world.setBlockState(mutable, Blocks.SMALL_DRIPLEAF.getDefaultState(), 3);
+
+            if (world.getBlockState(mutable).getMaterial().isReplaceable() && world.getBlockState(mutable.down()).isIn(BlockTags.AZALEA_ROOT_REPLACEABLE)) {
+                world.setBlockState(mutable, Blocks.SMALL_DRIPLEAF.getStateWithProperties(Blocks.SMALL_DRIPLEAF.getDefaultState().with(SmallDripleafBlock.HALF, DoubleBlockHalf.UPPER).with(Properties.WATERLOGGED, true)), 3);
             }
         }
-
         return true;
     }
 }

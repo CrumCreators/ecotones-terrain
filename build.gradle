@@ -28,6 +28,7 @@ dependencies {
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modImplementation include("fr.catcore:server-translations-api:1.4.12+1.18.2")
+	modImplementation include("eu.pb4:polymer:0.2.0-rc.4.1+1.18.2")
 
 	compileOnly "com.google.code.findbugs:jsr305:3.0.2"
 

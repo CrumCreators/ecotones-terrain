@@ -11,6 +11,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import supercoder79.ecotones.blocks.HeadBlocks;
 import supercoder79.ecotones.gen.DataGen;
 import supercoder79.ecotones.util.*;
 import supercoder79.ecotones.util.deco.BlockDecorations;
@@ -54,6 +55,8 @@ public final class Ecotones implements ModInitializer {
 		long start = System.currentTimeMillis();
 
 		OreVeins.init();
+
+		HeadBlocks.init();
 
 		EcotonesFoliagePlacers.init();
 		EcotonesTreeDecorators.init();
