@@ -19,6 +19,8 @@ import net.minecraft.util.math.BlockPos.Mutable;
 import net.minecraft.util.math.noise.OctavePerlinNoiseSampler;
 import net.minecraft.util.math.noise.OctaveSimplexNoiseSampler;
 import net.minecraft.util.math.noise.PerlinNoiseSampler;
+import net.minecraft.util.math.random.CheckedRandom;
+import net.minecraft.util.math.random.ChunkRandom;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.ChunkRegion;
@@ -34,6 +36,7 @@ import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.*;
 import net.minecraft.world.gen.feature.ConfiguredStructureFeature;
 import net.minecraft.world.gen.feature.StructureFeature;
+import net.minecraft.world.gen.noise.NoiseConfig;
 import net.minecraft.world.gen.random.ChunkRandom;
 import net.minecraft.world.gen.random.SimpleRandom;
 import supercoder79.ecotones.util.BiomeCache;
@@ -81,6 +84,8 @@ public abstract class BaseEcotonesChunkGenerator extends ChunkGenerator {
     private final int noiseSizeY;
     private final int noiseSizeZ;
     protected final ChunkRandom random;
+
+    protected final Random juRandom;
     private final OctavePerlinNoiseSampler lowerInterpolatedNoise;
     private final OctavePerlinNoiseSampler upperInterpolatedNoise;
     private final OctavePerlinNoiseSampler interpolationNoise;
@@ -95,7 +100,7 @@ public abstract class BaseEcotonesChunkGenerator extends ChunkGenerator {
 
     public BaseEcotonesChunkGenerator(Registry<StructureSet> structures, BiomeSource biomeSource, long seed) {
 //        super(biomeSource, biomeSource, new EcotonesStructuresConfig(Optional.of(DEFAULT_STRONGHOLD), Maps.newHashMap(DEFAULT_STRUCTURES)), seed);
-        super(structures, Optional.empty(), biomeSource, biomeSource, seed);
+        super(structures, Optional.empty(), biomeSource);
         this.seed = seed;
         this.verticalNoiseResolution = 8;
         this.horizontalNoiseResolution = 4;
@@ -104,7 +109,8 @@ public abstract class BaseEcotonesChunkGenerator extends ChunkGenerator {
         this.noiseSizeX = 16 / this.horizontalNoiseResolution;
         this.noiseSizeY = 384 / this.verticalNoiseResolution;
         this.noiseSizeZ = 16 / this.horizontalNoiseResolution;
-        this.random = new ChunkRandom(new SimpleRandom(seed));
+        this.random = new ChunkRandom(new CheckedRandom(seed));
+        this.juRandom = new Random(seed);
         this.lowerInterpolatedNoise = OctavePerlinNoiseSampler.createLegacy(this.random, IntStream.rangeClosed(-15, 0));
         this.upperInterpolatedNoise = OctavePerlinNoiseSampler.createLegacy(this.random, IntStream.rangeClosed(-15, 0));
         this.interpolationNoise = OctavePerlinNoiseSampler.createLegacy(this.random, IntStream.rangeClosed(-7, 0));
@@ -115,7 +121,7 @@ public abstract class BaseEcotonesChunkGenerator extends ChunkGenerator {
 
         this.riverWorker = new RiverWorker(seed);
 
-        this.riverNoiseNoise = new OctaveNoiseSampler<>(OpenSimplexNoise.class, this.random, 4, 128, 0.15, 0.15);
+        this.riverNoiseNoise = new OctaveNoiseSampler<>(OpenSimplexNoise.class, this.juRandom, 4, 128, 0.15, 0.15);
     }
 
     public double sampleTerrainNoise(int x, int y, int z, double horizontalScale, double verticalScale, double horizontalStretch, double verticalStretch) {
@@ -418,11 +424,11 @@ public abstract class BaseEcotonesChunkGenerator extends ChunkGenerator {
     protected abstract RegistryKey<Biome> key(Biome biome);
 
     @Override
-    public void buildSurface(ChunkRegion region, StructureAccessor structures, Chunk chunk) {
+    public void buildSurface(ChunkRegion region, StructureAccessor structures, NoiseConfig noiseConfig, Chunk chunk) {
         ChunkPos pos = chunk.getPos();
         int chunkX = pos.x;
         int chunkZ = pos.z;
-        ImprovedChunkRandom random = new ImprovedChunkRandom(new SimpleRandom(0));
+        ImprovedChunkRandom random = new ImprovedChunkRandom(0);
         random.setTerrainSeed(chunkX, chunkZ);
         int chunkStartX = pos.getStartX();
         int chunkStartZ = pos.getStartZ();
@@ -449,7 +455,7 @@ public abstract class BaseEcotonesChunkGenerator extends ChunkGenerator {
         this.buildBedrock(chunk, random);
     }
 
-    private <SC extends SurfaceConfig> void dispatchSurfaceBuilder(ConfiguredSurfaceBuilder<SC> configuredSurfaceBuilder, ChunkRegion region, Chunk chunk, ChunkRandom random, int x, int z, int y, double noise, Biome biome) {
+    private <SC extends SurfaceConfig> void dispatchSurfaceBuilder(ConfiguredSurfaceBuilder<SC> configuredSurfaceBuilder, ChunkRegion region, Chunk chunk, Random random, int x, int z, int y, double noise, Biome biome) {
         SurfaceBuilder<SC> builder =  configuredSurfaceBuilder.surfaceBuilder;
 
         SC config = configuredSurfaceBuilder.config;
@@ -485,9 +491,9 @@ public abstract class BaseEcotonesChunkGenerator extends ChunkGenerator {
     }
 
     @Override
-    public CompletableFuture<Chunk> populateNoise(Executor executor, Blender blender, StructureAccessor accessor, Chunk chunk) {
+    public CompletableFuture<Chunk> populateNoise(Executor executor, Blender blender, NoiseConfig noiseConfig, StructureAccessor structureAccessor, Chunk chunk) {
         // TODO: proper multithreading
-        populateNoise(accessor, chunk);
+        populateNoise(structureAccessor, chunk);
 
         return CompletableFuture.completedFuture(chunk);
     }

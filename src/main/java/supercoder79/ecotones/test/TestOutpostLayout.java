@@ -16,6 +16,7 @@ import net.minecraft.world.gen.StructureAccessor;
 import net.minecraft.world.gen.chunk.Blender;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.VerticalBlockSample;
+import net.minecraft.world.gen.noise.NoiseConfig;
 import supercoder79.ecotones.api.DevOnly;
 import supercoder79.ecotones.util.Vec2i;
 import supercoder79.ecotones.world.structure.EcotonesStructuresConfig;
@@ -134,22 +135,11 @@ public class TestOutpostLayout {
         }
 
         @Override
-        public ChunkGenerator withSeed(long seed) {
-            return null;
+        public void carve(ChunkRegion chunkRegion, long seed, NoiseConfig noiseConfig, BiomeAccess world, StructureAccessor structureAccessor, Chunk chunk, GenerationStep.Carver carverStep) {
         }
 
         @Override
-        public MultiNoiseUtil.MultiNoiseSampler getMultiNoiseSampler() {
-            return null;
-        }
-
-        @Override
-        public void carve(ChunkRegion chunkRegion, long seed, BiomeAccess biomeAccess, StructureAccessor structureAccessor, Chunk chunk, GenerationStep.Carver generationStep) {
-
-        }
-
-        @Override
-        public void buildSurface(ChunkRegion region, StructureAccessor structures, Chunk chunk) {
+        public void buildSurface(ChunkRegion region, StructureAccessor structures, NoiseConfig noiseConfig, Chunk chunk) {
 
         }
 
@@ -164,7 +154,7 @@ public class TestOutpostLayout {
         }
 
         @Override
-        public CompletableFuture<Chunk> populateNoise(Executor executor, Blender blender, StructureAccessor structureAccessor, Chunk chunk) {
+        public CompletableFuture<Chunk> populateNoise(Executor executor, Blender blender, NoiseConfig noiseConfig, StructureAccessor structureAccessor, Chunk chunk) {
             return null;
         }
 
@@ -179,17 +169,17 @@ public class TestOutpostLayout {
         }
 
         @Override
-        public int getHeight(int x, int z, Heightmap.Type heightmap, HeightLimitView world) {
+        public int getHeight(int x, int z, Heightmap.Type heightmap, HeightLimitView world, NoiseConfig noiseConfig) {
             return 0;
         }
 
         @Override
-        public VerticalBlockSample getColumnSample(int x, int z, HeightLimitView world) {
+        public VerticalBlockSample getColumnSample(int x, int z, HeightLimitView world, NoiseConfig noiseConfig) {
             return null;
         }
 
         @Override
-        public void getDebugHudText(List<String> text, BlockPos pos) {
+        public void getDebugHudText(List<String> text, NoiseConfig noiseConfig, BlockPos pos) {
 
         }
     }
