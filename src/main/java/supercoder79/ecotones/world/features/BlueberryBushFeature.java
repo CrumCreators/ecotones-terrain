@@ -22,7 +22,7 @@ public class BlueberryBushFeature extends EcotonesFeature<DefaultFeatureConfig> 
     public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
         StructureWorldAccess world = context.getWorld();
         BlockPos pos = context.getOrigin();
-        Random random = context.getRandom();
+        Random random = new Random(context.getRandom().nextLong());
         ChunkGenerator generator = context.getGenerator();
 
         //TODO Make Blueberry bush as player head

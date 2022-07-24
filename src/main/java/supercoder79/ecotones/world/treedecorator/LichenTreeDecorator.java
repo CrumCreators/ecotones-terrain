@@ -1,19 +1,20 @@
 package supercoder79.ecotones.world.treedecorator;
 
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.VineBlock;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 import java.util.function.BiConsumer;
 
@@ -32,14 +33,17 @@ public class LichenTreeDecorator extends TreeDecorator {
     }
 
     @Override
-    public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
+    public void generate(Generator generator) {
+        ObjectArrayList<BlockPos> logPositions = generator.getLogPositions();
+        Random random = generator.getRandom();
+        TestableWorld world = generator.getWorld();
         for (BlockPos pos : logPositions) {
             if (random.nextInt(this.chance) == 0) {
                 // Get random direction
                 Direction dir = randomDirection(random);
                 if (world.testBlockState(pos.offset(dir), s -> s.isAir())) {
                     // Place lichen towards trunk- so get opposite and then place
-                    replacer.accept(pos.offset(dir), Blocks.GLOW_LICHEN.getDefaultState().with(VineBlock.FACING_PROPERTIES.get(dir.getOpposite()), true));
+                    generator.replace(pos.offset(dir), Blocks.GLOW_LICHEN.getDefaultState().with(VineBlock.FACING_PROPERTIES.get(dir.getOpposite()), true));
                 }
             }
         }

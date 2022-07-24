@@ -5,17 +5,16 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.CheckedRandom;
+import net.minecraft.util.math.random.ChunkRandom;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.math.noise.PerlinNoiseSampler;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
-import net.minecraft.world.gen.random.ChunkRandom;
-import net.minecraft.world.gen.random.SimpleRandom;
 import supercoder79.ecotones.world.features.EcotonesFeature;
-
-import java.util.Random;
 
 public class WideGraniteSpringFeature extends EcotonesFeature<DefaultFeatureConfig> {
     public WideGraniteSpringFeature(Codec<DefaultFeatureConfig> configCodec) {
@@ -33,7 +32,7 @@ public class WideGraniteSpringFeature extends EcotonesFeature<DefaultFeatureConf
             return false;
         }
 
-        PerlinNoiseSampler sampler = new PerlinNoiseSampler(new ChunkRandom(new SimpleRandom(world.getSeed())));
+        PerlinNoiseSampler sampler = new PerlinNoiseSampler(new ChunkRandom(new CheckedRandom(world.getSeed())));
 
         BlockPos.Mutable mutable = pos.mutableCopy();
 

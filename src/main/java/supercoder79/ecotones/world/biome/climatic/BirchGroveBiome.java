@@ -13,6 +13,7 @@ import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.placementmodifier.*;
 import net.minecraft.world.gen.feature.*;
+import supercoder79.ecotones.world.structure.EcotonesStructures;
 import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.api.Climate;
@@ -28,8 +29,6 @@ import supercoder79.ecotones.world.features.config.DuckweedFeatureConfig;
 import supercoder79.ecotones.world.features.config.FeatureConfigHolder;
 import supercoder79.ecotones.world.features.config.RockFeatureConfig;
 import supercoder79.ecotones.world.features.config.SimpleTreeFeatureConfig;
-import supercoder79.ecotones.world.structure.EcotonesConfiguredStructures;
-import supercoder79.ecotones.world.surface.EcotonesSurfaces;
 
 public class BirchGroveBiome extends EcotonesBiomeBuilder {
     public static Biome INSTANCE;
@@ -59,8 +58,8 @@ public class BirchGroveBiome extends EcotonesBiomeBuilder {
 
         this.hilliness(hilliness);
         this.volatility(volatility);
-        this.addStructureFeature(EcotonesConfiguredStructures.CAMPFIRE_BIRCH);
-        this.category(Biome.Category.PLAINS);
+        this.addStructureFeature(EcotonesStructures.CAMPFIRE_BIRCH);
+        //this.category(Biome.Category.PLAINS);
 
         DefaultBiomeFeatures.addLandCarvers(this.getGenerationSettings());
         DefaultBiomeFeatures.addPlainsTallGrass(this.getGenerationSettings());
@@ -76,7 +75,7 @@ public class BirchGroveBiome extends EcotonesBiomeBuilder {
 
         DefaultBiomeFeatures.addForestFlowers(this.getGenerationSettings());
 
-        this.addStructureFeature(ConfiguredStructureFeatures.STRONGHOLD.value());
+        //this.addStructureFeature(ConfiguredStructureFeatures.STRONGHOLD.value());
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                 EcotonesFeatures.RANDOM_PATCH.configure(FeatureConfigHolder.CLOVER)

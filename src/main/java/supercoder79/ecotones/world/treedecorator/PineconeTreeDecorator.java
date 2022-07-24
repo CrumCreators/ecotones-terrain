@@ -1,16 +1,17 @@
 package supercoder79.ecotones.world.treedecorator;
 
 import com.mojang.serialization.Codec;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.TestableWorld;
 import net.minecraft.world.gen.treedecorator.TreeDecorator;
 import net.minecraft.world.gen.treedecorator.TreeDecoratorType;
 
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 import java.util.function.BiConsumer;
 
@@ -23,14 +24,17 @@ public class PineconeTreeDecorator extends TreeDecorator {
     }
 
     @Override
-    public void generate(TestableWorld world, BiConsumer<BlockPos, BlockState> replacer, Random random, List<BlockPos> logPositions, List<BlockPos> leavesPositions) {
+    public void generate(Generator generator) {
+        ObjectArrayList<BlockPos> leavesPositions = generator.getLeavesPositions();
+        TestableWorld world = generator.getWorld();
+        Random random = generator.getRandom();
         for (BlockPos pos : leavesPositions) {
             if (world.testBlockState(pos.down(), s -> s.isAir())) {
                 if (random.nextInt(rarity) == 0) {
                     BlockPos downPos = pos.down();
                     if (world.testBlockState(downPos, s -> s.isAir())) {
                         //TODO Replace with pinecone head
-                        //replacer.accept(downPos, EcotonesBlocks.PINECONE.getDefaultState());
+                        //generator.replace(downPos, EcotonesBlocks.PINECONE.getDefaultState());
                     }
                 }
             }

@@ -5,6 +5,7 @@ import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.block.Material;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.FluidTags;
@@ -13,11 +14,8 @@ import net.minecraft.util.math.ChunkSectionPos;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
-import net.minecraft.world.gen.feature.StructureFeature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-
-import java.util.Random;
 
 public class SulfurousLakeFeature extends EcotonesFeature<SulfurousLakeFeature.Config> {
     private static final BlockState CAVE_AIR = Blocks.CAVE_AIR.getDefaultState();

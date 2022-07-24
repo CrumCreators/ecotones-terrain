@@ -10,6 +10,7 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.state.property.Property;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
@@ -17,7 +18,6 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import supercoder79.ecotones.world.features.config.DuckweedFeatureConfig;
 
-import java.util.Random;
 
 public class DuckweedFeature extends EcotonesFeature<DuckweedFeatureConfig> {
     public DuckweedFeature(Codec<DuckweedFeatureConfig> configCodec) {
@@ -42,7 +42,7 @@ public class DuckweedFeature extends EcotonesFeature<DuckweedFeatureConfig> {
             int dz = random.nextInt(spread) - random.nextInt(spread) + pos.getZ();
             int y = world.getTopY(Heightmap.Type.WORLD_SURFACE_WG, dx, dz);
 
-            mutable.set(dx, y- random.nextInt(2,4), dz);
+            mutable.set(dx, y- random.nextInt(4)+1, dz);
 
 
             if (world.getBlockState(mutable).getMaterial().isReplaceable() && world.getBlockState(mutable.down()).isIn(BlockTags.AZALEA_ROOT_REPLACEABLE)) {

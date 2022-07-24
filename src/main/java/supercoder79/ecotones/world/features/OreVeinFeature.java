@@ -3,6 +3,7 @@ package supercoder79.ecotones.world.features;
 import com.mojang.serialization.Codec;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
@@ -15,7 +16,6 @@ import supercoder79.ecotones.util.vein.OreVeins;
 import supercoder79.ecotones.world.features.config.RockFeatureConfig;
 
 import java.util.Optional;
-import java.util.Random;
 
 public class OreVeinFeature extends EcotonesFeature<DefaultFeatureConfig> {
     private long seed;
@@ -136,7 +136,7 @@ public class OreVeinFeature extends EcotonesFeature<DefaultFeatureConfig> {
 
     private void initSeed(long seed) {
         if (this.seed != seed || this.enabledNoise == null) {
-            Random random = new Random(seed);
+            java.util.Random random = new java.util.Random(seed);
             this.seed = seed;
             this.enabledNoise = new OctaveNoiseSampler<>(OpenSimplexNoise.class, random, 3, 512 + 256, 1, 1);
             this.floorNoise = new OctaveNoiseSampler<>(OpenSimplexNoise.class, random, 2, 256, 1, 1);

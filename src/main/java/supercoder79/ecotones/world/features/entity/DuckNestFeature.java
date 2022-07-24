@@ -7,6 +7,7 @@ import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.StructureWorldAccess;
@@ -15,8 +16,6 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import supercoder79.ecotones.blocks.NestBlock;
 import supercoder79.ecotones.world.features.EcotonesFeature;
-
-import java.util.Random;
 
 public class DuckNestFeature extends EcotonesFeature<DefaultFeatureConfig> {
     public DuckNestFeature(Codec<DefaultFeatureConfig> configCodec) {
