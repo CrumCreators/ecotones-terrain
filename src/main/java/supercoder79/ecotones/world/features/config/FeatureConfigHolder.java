@@ -103,8 +103,7 @@ public final class FeatureConfigHolder {
     public static final RandomPatchFeatureConfig DRY_STEPPE_CONFIG =
             new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
                     .add(Blocks.DEAD_BUSH.getDefaultState(), 1)
-                    .add(Blocks.SAND.getDefaultState(), 4)
-                    .add(Blocks.GRASS.getDefaultState(), 2))).tries(32).build();
+                    .add(Blocks.GRASS.getDefaultState(), 6))).tries(32).build();
     
 
     public static final RandomPatchFeatureConfig TAIGA_GRASS_CONFIG =
@@ -155,7 +154,6 @@ public final class FeatureConfigHolder {
             .build();
 
     public static final RandomPatchFeatureConfig SMALL_CACTUS =
-            //TODO Make tiny cactus a head (done?)
             new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
                     .add(HeadBlocks.SMALL_CACTUS.getDefaultState(), 1)))
                     .spreadX(7)

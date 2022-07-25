@@ -33,7 +33,7 @@ public class WideShrubFeature extends EcotonesFeature<SimpleTreeFeatureConfig> {
             }
         }
 
-        if (world.getBlockState(pos.down()) != Blocks.GRASS_BLOCK.getDefaultState()) {
+        if (world.getBlockState(pos.down()) != Blocks.GRASS_BLOCK.getDefaultState() || world.getBlockState(pos.down()) != Blocks.MUD.getDefaultState()) {
             return true;
         }
 

@@ -5,6 +5,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.state.property.Properties;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -35,7 +36,7 @@ public class DuckNestFeature extends EcotonesFeature<DefaultFeatureConfig> {
 
         // TODO: entity simulation
         if (NestBlock.isValid(world.getBlockState(pos.down()).getBlock())) {
-            world.setBlockState(pos, Blocks.DEAD_BRAIN_CORAL_FAN.getDefaultState(), 3);
+            world.setBlockState(pos, Blocks.DEAD_BRAIN_CORAL_FAN.getStateWithProperties(Blocks.DEAD_BRAIN_CORAL_FAN.getDefaultState().with(Properties.WATERLOGGED, false)), 3);
 
             int duckCount = 1 + random.nextInt(3);
 

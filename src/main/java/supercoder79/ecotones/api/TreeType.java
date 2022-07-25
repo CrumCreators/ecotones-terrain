@@ -46,8 +46,8 @@ public class TreeType {
     // Jungle trees
     public static final TreeGenerationConfig LUSH_JUNGLE = new TreeGenerationConfig(0.2, Blocks.JUNGLE_LOG.getDefaultState(), Blocks.JUNGLE_LEAVES.getDefaultState(), 4, 4, 14, 8, 0.45, 0.45, true, 79);
 
-    // Mangrove trees
-    public static final TreeGenerationConfig MANGROVE = new TreeGenerationConfig(4, Blocks.OAK_LOG.getDefaultState(), Blocks.OAK_LEAVES.getDefaultState(), 3, -1, 5, 2, 0.2, 0.2, false, 79);
+    // Mangrove trees (minSize was 4)
+    public static final TreeGenerationConfig MANGROVE = new TreeGenerationConfig(4, Blocks.MANGROVE_LOG.getDefaultState(), Blocks.MANGROVE_LEAVES.getDefaultState(), 3, -1, 8, 2, 0.2, 0.2, false, 79);
 
     // Dark oak trees
     public static final TreeGenerationConfig RARE_DARK_OAK = new TreeGenerationConfig(0.3, Blocks.DARK_OAK_LOG.getDefaultState(), Blocks.DARK_OAK_LEAVES.getDefaultState(), 3, -1, 6, 4, 0.2, 0.2, false, 79);

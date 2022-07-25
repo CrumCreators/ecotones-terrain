@@ -37,7 +37,7 @@ public class DeadTreeFeature extends EcotonesFeature<SimpleTreeFeatureConfig> {
 		SimpleTreeFeatureConfig config = context.getConfig();
 
 		BlockState downState = world.getBlockState(pos.down());
-		if (!(world.getBlockState(pos).isAir() && (downState.isOf(Blocks.SAND) || downState.isOf(Blocks.GRASS_BLOCK)))) {
+		if (!(world.getBlockState(pos).isAir() && (downState.isOf(Blocks.SAND) || downState.isOf(Blocks.GRASS_BLOCK) || downState.isOf(Blocks.MUD)))) {
 			// Spawn 1/2 as often in red rock biomes, TODO: extract this out
 			if (downState.isOf(Blocks.SMOOTH_RED_SANDSTONE) && world.getBlockState(pos).isAir()) {
 				if (random.nextBoolean()) {

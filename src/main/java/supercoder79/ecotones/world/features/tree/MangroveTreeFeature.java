@@ -4,6 +4,8 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.state.property.Properties;
+import net.minecraft.tag.BlockTags;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockBox;
 import net.minecraft.util.math.BlockPos;
@@ -43,11 +45,11 @@ public class MangroveTreeFeature extends EcotonesFeature<TreeGenerationConfig> {
         TreeGenerationConfig config = context.getConfig();
 
         BlockState downState = world.getBlockState(pos.down());
-        if (downState != Blocks.GRASS_BLOCK.getDefaultState() && downState != Blocks.DIRT.getDefaultState()) {
+        if (downState != Blocks.MUD.getDefaultState() && downState != Blocks.PACKED_MUD.getDefaultState()) {
             return true;
         }
-
-        int maxHeight = 4;
+        //was 10
+        int maxHeight = 16;
         if (pos instanceof DataPos data) {
             maxHeight = data.maxHeight;
 
@@ -55,8 +57,8 @@ public class MangroveTreeFeature extends EcotonesFeature<TreeGenerationConfig> {
                 return false;
             }
         }
-
-        int depth = 3;
+        //was 3
+        int depth = 5;
         int ySurface = world.getTopY(Heightmap.Type.WORLD_SURFACE_WG, pos.getX(), pos.getZ());
         int yFloor = world.getTopY(Heightmap.Type.OCEAN_FLOOR_WG, pos.getX(), pos.getZ());
 
@@ -99,7 +101,7 @@ public class MangroveTreeFeature extends EcotonesFeature<TreeGenerationConfig> {
     private void root(WorldAccess world, BlockPos startPos, Random random, float yaw, float pitch, TreeGenerationConfig config) {
         BlockPos local = startPos;
         int i = 0;
-        while (world.getBlockState(local).isAir() || world.getBlockState(local).getFluidState().isIn(FluidTags.WATER) || world.getBlockState(local) == config.woodState || world.getBlockState(local).getMaterial().isReplaceable()) {
+        while (world.getBlockState(local).isAir() || world.getBlockState(local).getFluidState().isIn(FluidTags.WATER) || world.getBlockState(local).isIn(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH) || world.getBlockState(local).getMaterial().isReplaceable()) {
             local = startPos.add(
                     MathHelper.sin(pitch) * MathHelper.cos(yaw) * i,
                     MathHelper.cos(pitch) * i,
@@ -108,7 +110,13 @@ public class MangroveTreeFeature extends EcotonesFeature<TreeGenerationConfig> {
             if (i > 25) break;
 
             if (TreeHelper.canLogReplace(world, local)) {
-                world.setBlockState(local, config.woodState, 0);
+                if (world.getBlockState(local).getFluidState().isIn(FluidTags.WATER)) {
+                    world.setBlockState(local, Blocks.MANGROVE_ROOTS.getStateWithProperties(Blocks.MANGROVE_ROOTS.getDefaultState().with(Properties.WATERLOGGED, true)), 0);
+                } else if (world.getBlockState(local).isOf(Blocks.MUD) || world.getBlockState(local).isOf(Blocks.MUDDY_MANGROVE_ROOTS)) {
+                    world.setBlockState(local, Blocks.MUDDY_MANGROVE_ROOTS.getDefaultState(), 0);
+                } else {
+                    world.setBlockState(local, Blocks.MANGROVE_ROOTS.getDefaultState(), 0);
+                }
             }
         }
     }

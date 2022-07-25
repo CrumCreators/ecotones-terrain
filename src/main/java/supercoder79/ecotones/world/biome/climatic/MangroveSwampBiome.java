@@ -1,11 +1,14 @@
 package supercoder79.ecotones.world.biome.climatic;
 
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.SpawnSettings;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.ProbabilityConfig;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
@@ -42,7 +45,7 @@ public class MangroveSwampBiome extends EcotonesBiomeBuilder {
     }
 
     protected MangroveSwampBiome() {
-        this.surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG);
+        this.surfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.MUDDY_CONFIG);
 
         this.depth(-0.28F);
         this.scale(0.0F);
@@ -61,7 +64,7 @@ public class MangroveSwampBiome extends EcotonesBiomeBuilder {
         //this.addStructureFeature(ConfiguredStructureFeatures.STRONGHOLD.value());
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.SHRUB.configure(new SimpleTreeFeatureConfig(Blocks.OAK_LOG.getDefaultState(), Blocks.OAK_LEAVES.getDefaultState()))
+                EcotonesFeatures.SHRUB.configure(new SimpleTreeFeatureConfig(Blocks.MANGROVE_LOG.getDefaultState(), Blocks.MANGROVE_LEAVES.getDefaultState()))
                         .decorate(EcotonesDecorators.SHRUB_PLACEMENT_DECORATOR.configure(new ShrubDecoratorConfig(1.3))));
 
         this.addFeature(GenerationStep.Feature.LOCAL_MODIFICATIONS,
@@ -69,19 +72,12 @@ public class MangroveSwampBiome extends EcotonesBiomeBuilder {
                         .decorate(EcotonesDecorators.LARGE_ROCK.configure(new ChanceDecoratorConfig(12))));
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.WIDE_SHRUB.configure(new SimpleTreeFeatureConfig(Blocks.OAK_LOG.getDefaultState(), Blocks.OAK_LEAVES.getDefaultState()))
+                EcotonesFeatures.WIDE_SHRUB.configure(new SimpleTreeFeatureConfig(Blocks.MANGROVE_LOG.getDefaultState(), Blocks.MANGROVE_LEAVES.getDefaultState()))
                         .decorate(EcotonesDecorators.SHRUB_PLACEMENT_DECORATOR.configure(new ShrubDecoratorConfig(0.55))));
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.RANDOM_PATCH.configure(FeatureConfigHolder.RARELY_SHORT_GRASS_CONFIG)
-                        .decorate(new Spread32Decorator())
-                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
-                        .spreadHorizontally()
-                        .decorate(NoiseThresholdCountPlacementModifier.of(-0.8D, 7, 12)));
-
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.RANDOM_PATCH.configure(FeatureConfigHolder.MOSS)
-                        .repeat(6)
+                EcotonesFeatures.RANDOM_PATCH.configure(new RandomPatchFeatureConfig.Builder(BlockStateProvider.of(Blocks.DEAD_BUSH.getDefaultState())).tries(2).build())
+                        .repeat(1)
                         .spreadHorizontally()
                         .decorate(new Spread32Decorator()));
 
@@ -96,7 +92,7 @@ public class MangroveSwampBiome extends EcotonesBiomeBuilder {
                         .decorate(new Spread32Decorator()));
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.DEAD_TREE.configure(new SimpleTreeFeatureConfig(Blocks.OAK_LOG.getDefaultState(), Blocks.AIR.getDefaultState()))
+                EcotonesFeatures.DEAD_TREE.configure(new SimpleTreeFeatureConfig(Blocks.MANGROVE_LOG.getDefaultState(), Blocks.AIR.getDefaultState()))
                         .decorate(EcotonesDecorators.REVERSE_QUALITY_TREE_DECORATOR.configure(new SimpleTreeDecorationData(0.3))));
 
         this.addFeature(GenerationStep.Feature.TOP_LAYER_MODIFICATION,
@@ -133,6 +129,7 @@ public class MangroveSwampBiome extends EcotonesBiomeBuilder {
         DefaultBiomeFeatures.addFrozenTopLayer(this.getGenerationSettings());
 
         BiomeHelper.addDefaultSpawns(this.getSpawnSettings());
+        this.addSpawn(SpawnGroup.CREATURE, new SpawnSettings.SpawnEntry(EntityType.FROG, 15, 1, 4));
         BiomeHelper.addDefaultFeatures(this);
     }
 }

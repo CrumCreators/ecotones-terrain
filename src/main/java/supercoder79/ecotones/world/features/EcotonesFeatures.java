@@ -5,6 +5,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
+import net.minecraft.world.gen.feature.TreePlacedFeatures;
 import supercoder79.ecotones.Ecotones;
 import supercoder79.ecotones.api.TreeGenerationConfig;
 import supercoder79.ecotones.util.RegistryReport;
@@ -64,6 +65,8 @@ public final class EcotonesFeatures {
     public static final EcotonesFeature<DefaultFeatureConfig> GEYSER_PATCH = new GeyserPatchFeature(DefaultFeatureConfig.CODEC);
     public static final EcotonesFeature<CattailFeatureConfig> CATTAIL = new CattailFeature(CattailFeatureConfig.CODEC);
     public static final EcotonesFeature<DuckweedFeatureConfig> DUCKWEED = new DuckweedFeature(DuckweedFeatureConfig.CODEC);
+
+    public static final EcotonesFeature<SmallCactusFeatureConfig> SMALL_CACTUS = new SmallCactusFeature(SmallCactusFeatureConfig.CODEC);
     public static final EcotonesFeature<SimpleTreeFeatureConfig> BRUSH_TREE = new BrushTreeFeature(SimpleTreeFeatureConfig.CODEC);
     public static final EcotonesFeature<SimpleTreeFeatureConfig> TALL_PINE = new TallPineTree(SimpleTreeFeatureConfig.CODEC);
     public static final EcotonesFeature<DefaultFeatureConfig> ORE_VEIN = new OreVeinFeature(DefaultFeatureConfig.CODEC);
@@ -120,6 +123,7 @@ public final class EcotonesFeatures {
         register("geyser_patch", GEYSER_PATCH);
         register("cattail", CATTAIL);
         register("duckweed", DUCKWEED);
+        register("small_cactus", SMALL_CACTUS);
         register("brush_tree", BRUSH_TREE);
         register("tall_pine", TALL_PINE);
         register("random_patch", RANDOM_PATCH);

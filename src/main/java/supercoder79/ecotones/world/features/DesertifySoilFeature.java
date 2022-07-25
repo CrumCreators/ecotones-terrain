@@ -23,7 +23,11 @@ public class DesertifySoilFeature extends EcotonesFeature<DefaultFeatureConfig> 
 
         if (world.getBlockState(pos.down()) != Blocks.GRASS_BLOCK.getDefaultState()) return false;
 
-        world.setBlockState(pos.down(), Blocks.COARSE_DIRT.getDefaultState(), 3);
+        if (random.nextBoolean()) {
+            world.setBlockState(pos.down(), Blocks.COARSE_DIRT.getDefaultState(), 3);
+        } else {
+            world.setBlockState(pos.down(), Blocks.SAND.getDefaultState(), 3);
+        }
 
         //66% chance of dead bush
         if (random.nextInt(3) > 0) {

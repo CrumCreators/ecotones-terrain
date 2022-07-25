@@ -27,8 +27,8 @@ public class DuckNestDecorator extends PlacementModifier {
         double chance = config.targetCount;
 
         if (random.nextDouble() < chance) {
-            int x = random.nextInt(16) + pos.getX();
-            int z = random.nextInt(16) + pos.getZ();
+            int x = random.nextInt(64) + pos.getX();
+            int z = random.nextInt(64) + pos.getZ();
             int y = context.getTopY(Heightmap.Type.OCEAN_FLOOR_WG, x, z);
             return Stream.of(new BlockPos(x, y, z));
         } else {

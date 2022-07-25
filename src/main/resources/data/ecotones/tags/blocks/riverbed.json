@@ -1,0 +1,13 @@
+{
+    "replace": false,
+    "values": [
+        "minecraft:dirt",
+        "minecraft:packed_mud",
+        "minecraft:gravel",
+        "minecraft:sand",
+        "minecraft:clay",
+        "minecraft:stone",
+        "minecraft:cobblestone",
+        "minecraft:mangrove_roots"
+    ]
+}

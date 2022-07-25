@@ -35,7 +35,7 @@ public class ShrubFeature extends EcotonesFeature<SimpleTreeFeatureConfig> {
         }
         //TODO: lower leaf count in < 0.1 drainage areas
 
-        if (world.getBlockState(pos.down()) != Blocks.GRASS_BLOCK.getDefaultState()) return true;
+        if (world.getBlockState(pos.down()) != (Blocks.GRASS_BLOCK.getDefaultState()) || world.getBlockState(pos.down()) != Blocks.MUD.getDefaultState()) return true;
         int height = random.nextInt(randomHeight) + 1;
         for (int i = 0; i < height; i++) {
             world.setBlockState(pos.add(0, i, 0), config.woodState, 2);

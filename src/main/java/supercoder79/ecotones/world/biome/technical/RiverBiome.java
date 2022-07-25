@@ -3,6 +3,7 @@ package supercoder79.ecotones.world.biome.technical;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
@@ -15,6 +16,8 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.placementmodifier.HeightmapPlacementModifier;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.features.EcotonesConfiguredFeature;
+import supercoder79.ecotones.world.features.EcotonesFeatures;
+import supercoder79.ecotones.world.features.config.DuckweedFeatureConfig;
 import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.api.BiomeRegistries;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
@@ -57,6 +60,13 @@ public class RiverBiome extends EcotonesBiomeBuilder {
                 .decorate(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG))
                 .spreadHorizontally()
                 .repeat(48));
+
+        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                EcotonesFeatures.DUCKWEED.configure(new DuckweedFeatureConfig(UniformIntProvider.create(8, 16), UniformIntProvider.create(4, 6)))
+                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.OCEAN_FLOOR_WG))
+                        .spreadHorizontally()
+                        .applyChance(2)
+                        .repeat(6));
 
         this.addSpawn(SpawnGroup.AMBIENT, new SpawnSettings.SpawnEntry(EntityType.BAT, 10, 8, 8));
         this.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SPIDER, 100, 4, 4));

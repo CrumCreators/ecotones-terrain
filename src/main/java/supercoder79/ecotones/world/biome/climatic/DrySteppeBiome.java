@@ -3,6 +3,7 @@ package supercoder79.ecotones.world.biome.climatic;
 import net.minecraft.block.Blocks;
 import net.minecraft.structure.SavannaVillageData;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
@@ -12,6 +13,7 @@ import net.minecraft.world.gen.placementmodifier.*;
 import net.minecraft.world.gen.feature.*;
 import supercoder79.ecotones.world.decorator.*;
 import supercoder79.ecotones.world.features.EcotonesConfiguredFeature;
+import supercoder79.ecotones.world.features.config.*;
 import supercoder79.ecotones.world.river.deco.CommonRiverDecorations;
 import supercoder79.ecotones.world.surface.system.SurfaceBuilder;
 import supercoder79.ecotones.api.BiomeRegistries;
@@ -20,9 +22,6 @@ import supercoder79.ecotones.api.SimpleTreeDecorationData;
 import supercoder79.ecotones.world.biome.BiomeHelper;
 import supercoder79.ecotones.world.biome.EcotonesBiomeBuilder;
 import supercoder79.ecotones.world.features.EcotonesFeatures;
-import supercoder79.ecotones.world.features.config.FeatureConfigHolder;
-import supercoder79.ecotones.world.features.config.RockFeatureConfig;
-import supercoder79.ecotones.world.features.config.SimpleTreeFeatureConfig;
 import supercoder79.ecotones.world.surface.EcotonesSurfaces;
 
 public class DrySteppeBiome extends EcotonesBiomeBuilder {
@@ -98,17 +97,18 @@ public class DrySteppeBiome extends EcotonesBiomeBuilder {
                         .decorate(EcotonesDecorators.SHRUB_PLACEMENT_DECORATOR.configure(new ShrubDecoratorConfig(3.2))));
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.RANDOM_PATCH.configure(FeatureConfigHolder.SMALL_CACTUS)
-                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
-                        .spreadHorizontally()
-                        .applyChance(4));
-
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                 EcotonesFeatures.RANDOM_PATCH.configure(FeatureConfigHolder.DRY_STEPPE_CONFIG)
                         .decorate(new Spread32Decorator())
                         .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
                         .spreadHorizontally()
                         .decorate(NoiseThresholdCountPlacementModifier.of(-0.8D, 6, 8)));
+
+        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                EcotonesFeatures.SMALL_CACTUS.configure(new SmallCactusFeatureConfig(UniformIntProvider.create(0, 2), UniformIntProvider.create(8, 32)))
+                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
+                        .spreadHorizontally()
+                        .applyChance(2)
+                        .repeat(3));
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                 EcotonesConfiguredFeature.wrap(Feature.TREE, FeatureConfigHolder.DRY_STEPPE_TREE)
