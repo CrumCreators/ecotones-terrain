@@ -47,7 +47,7 @@ public class PhosphateDomeFeature extends EcotonesFeature<DefaultFeatureConfig> 
         pos = pos.down(2 + (Math.max(0, radius - 4)));
 
         for (int y = -2; y <= radius; y++) {
-            double chance = y > 2 ? 0.6 : ((y + 3) / 10.0);
+            double chance = y > 2 ? 0.03 : ((y + 3) / 80.0);
             chance += (random.nextDouble(0.075) - random.nextDouble(0.075));
 
             for (int x = -radius; x <= radius; x++) {

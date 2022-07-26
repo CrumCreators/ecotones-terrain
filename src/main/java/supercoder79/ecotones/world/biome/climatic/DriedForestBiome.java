@@ -89,7 +89,7 @@ public class DriedForestBiome extends EcotonesBiomeBuilder {
                         .decorate(EcotonesDecorators.SIMPLE_TREE_DECORATOR.configure(new SimpleTreeDecorationData(1.85))));
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.DESERTIFY_SOIL.configure(FeatureConfig.DEFAULT)
+                EcotonesFeatures.DRY_SOIL.configure(FeatureConfig.DEFAULT)
                         .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
                         .spreadHorizontally()
                         .decorate(EcotonesDecorators.COUNT_EXTRA.configure(new CountExtraDecoratorConfig(7, 0.5f, 3))));

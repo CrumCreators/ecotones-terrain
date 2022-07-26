@@ -4,9 +4,16 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.FacingBlock;
+import net.minecraft.block.StoneButtonBlock;
+import net.minecraft.block.enums.WallMountLocation;
+import net.minecraft.datafixer.fix.ChunkPalettedStorageFix;
+import net.minecraft.state.property.Properties;
 import net.minecraft.util.collection.DataPool;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.BlobFoliagePlacer;
@@ -50,8 +57,6 @@ public final class FeatureConfigHolder {
 
     public static final RandomPatchFeatureConfig SCRUBLAND_CONFIG =
             new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
-                    .add(Blocks.GRASS.getDefaultState(), 6)
-                    .add(Blocks.OAK_SAPLING.getDefaultState(), 2)
                     .add(Blocks.GRASS.getDefaultState(), 1))).tries(32).build();
 
     public static final RandomPatchFeatureConfig COOL_SCRUBLAND_CONFIG =
@@ -153,13 +158,6 @@ public final class FeatureConfigHolder {
             .needsWater()
             .build();
 
-    public static final RandomPatchFeatureConfig SMALL_CACTUS =
-            new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
-                    .add(HeadBlocks.SMALL_CACTUS.getDefaultState(), 1)))
-                    .spreadX(7)
-                    .spreadZ(7)
-                    .tries(12).build();
-
     public static final RandomPatchFeatureConfig THORN_BUSH =
             new RandomPatchFeatureConfig.Builder(BlockStateProvider.of(Blocks.SWEET_BERRY_BUSH.getDefaultState()))
                     .spreadX(7)
@@ -256,7 +254,7 @@ public final class FeatureConfigHolder {
     // misc
     public static final RandomPatchFeatureConfig SURFACE_ROCKS =
             new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
-                    .add(Blocks.STONE_BUTTON.getDefaultState(), 1)))
+                    .add(Blocks.STONE_BUTTON.getStateWithProperties(Blocks.STONE_BUTTON.getDefaultState().with(StoneButtonBlock.FACE, WallMountLocation.FLOOR)), 1)))
                     .spreadX(7)
                     .spreadZ(7)
                     .tries(4).build();
@@ -310,8 +308,7 @@ public final class FeatureConfigHolder {
             new WaterFeatureConfig(ImmutableList.of(Blocks.GRASS_BLOCK.getDefaultState()), Optional.empty(), 6);
 
     public static final WaterFeatureConfig PEAT_PATCH =
-            //TODO Replace with mud
-            new WaterFeatureConfig(ImmutableList.of(Blocks.GRASS_BLOCK.getDefaultState(), Blocks.CLAY.getDefaultState()), Optional.of(BlockStateProvider.of(Blocks.CLAY.getDefaultState())), 2);
+            new WaterFeatureConfig(ImmutableList.of(Blocks.GRASS_BLOCK.getDefaultState(), Blocks.MUD.getDefaultState()), Optional.of(BlockStateProvider.of(Blocks.MUD.getDefaultState())), 2);
 
     public static final WaterFeatureConfig GRANITE_WATER_POOL_PATCH =
             new WaterFeatureConfig(ImmutableList.of(Blocks.GRASS_BLOCK.getDefaultState(), Blocks.GRANITE.getDefaultState()), Optional.of(BlockStateProvider.of(Blocks.GRANITE.getDefaultState())), 3);

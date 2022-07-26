@@ -19,6 +19,8 @@ import supercoder79.ecotones.world.features.tree.*;
 
 public final class EcotonesFeatures {
     public static final EcotonesFeature<DefaultFeatureConfig> DESERTIFY_SOIL = new DesertifySoilFeature(DefaultFeatureConfig.CODEC);
+    public static final EcotonesFeature<DefaultFeatureConfig> DRY_SOIL = new DrySoilFeature(DefaultFeatureConfig.CODEC);
+    public static final EcotonesFeature<DefaultFeatureConfig> LESS_DRY_SOIL = new LessDrySoilFeature(DefaultFeatureConfig.CODEC);
     public static final EcotonesFeature<DefaultFeatureConfig> CACTI = new PlaceCactiFeature(DefaultFeatureConfig.CODEC);
     public static final EcotonesFeature<SimpleTreeFeatureConfig> SHRUB = new ShrubFeature(SimpleTreeFeatureConfig.CODEC);
     public static final EcotonesFeature<TreeFeatureConfig> JUNGLE_PALM_TREE = new PalmTreeFeature(TreeFeatureConfig.CODEC, Blocks.JUNGLE_WOOD.getDefaultState());
@@ -78,6 +80,8 @@ public final class EcotonesFeatures {
 
     public static void init() {
         register("desertify", DESERTIFY_SOIL);
+        register("dry", DRY_SOIL);
+        register("less_dry", LESS_DRY_SOIL);
         register("cacti", CACTI);
         register("shrub", SHRUB);
         register("palm_tree", JUNGLE_PALM_TREE);
