@@ -39,7 +39,7 @@ public class HazelGroveBiome extends EcotonesBiomeBuilder {
             new TreeFeatureConfig.Builder(
                     BlockStateProvider.of(Blocks.OAK_LOG.getDefaultState()),
                     new StraightTrunkPlacer(6, 2, 0),
-                    BlockStateProvider.of(Blocks.FLOWERING_AZALEA_LEAVES.getDefaultState()),
+                    BlockStateProvider.of(Blocks.ACACIA_LEAVES.getDefaultState()),
 //                    BlockStateProvider.of(EcotonesBlocks.HAZEL_SAPLING.getDefaultState()),
                     new BlobFoliagePlacer(ConstantIntProvider.create(2), ConstantIntProvider.create(0), 4),
                     new TwoLayersFeatureSize(2, 0, 2))

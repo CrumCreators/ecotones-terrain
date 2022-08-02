@@ -102,5 +102,9 @@ public final class EcotonesBiomes {
         LimestoneCaveBiome.init();
 
         RoseFieldBiome.init();
+
+        // Dev biomes
+        VolcanicBiome.init();
+        SuperVolcanicBiome.init();
     }
 }

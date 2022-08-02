@@ -1,4 +1,4 @@
-package supercoder79.ecotones.world.biome.unused;
+package supercoder79.ecotones.world.biome.special;
 
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
@@ -55,7 +55,7 @@ public class VolcanicBiome extends EcotonesBiomeBuilder {
         //this.addStructureFeature(ConfiguredStructureFeatures.STRONGHOLD.value());
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                EcotonesFeatures.RANDOM_PATCH.configure(FeatureConfigHolder.SURFACE_ROCKS)
+                EcotonesFeatures.RANDOM_PATCH.configure(FeatureConfigHolder.VOLCANIC_SURFACE_ROCKS)
                         .repeat(4)
                         .spreadHorizontally()
                         .decorate(new Spread32Decorator()));
@@ -90,13 +90,13 @@ public class VolcanicBiome extends EcotonesBiomeBuilder {
 //                        .spreadHorizontally()
 //                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING)));
 
-        this.addSpawn(SpawnGroup.AMBIENT, new SpawnSettings.SpawnEntry(EntityType.BAT, 10, 8, 8));
+        this.addSpawn(SpawnGroup.AMBIENT, new SpawnSettings.SpawnEntry(EntityType.BAT, 10, 1, 8));
         this.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SPIDER, 100, 4, 4));
         this.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE, 95, 4, 4));
         this.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ZOMBIE_VILLAGER, 5, 1, 1));
         this.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SKELETON, 100, 4, 4));
         this.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.CREEPER, 100, 4, 4));
-        this.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.SLIME, 100, 4, 4));
+        this.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.MAGMA_CUBE, 10, 1, 4));
         this.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.ENDERMAN, 10, 1, 4));
         this.addSpawn(SpawnGroup.MONSTER, new SpawnSettings.SpawnEntry(EntityType.WITCH, 5, 1, 1));
     }

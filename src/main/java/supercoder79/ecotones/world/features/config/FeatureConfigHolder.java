@@ -62,7 +62,8 @@ public final class FeatureConfigHolder {
     public static final RandomPatchFeatureConfig COOL_SCRUBLAND_CONFIG =
             new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
                     .add(Blocks.GRASS.getDefaultState(), 4)
-                    .add(Blocks.OAK_SAPLING.getDefaultState(), 5)
+                    .add(Blocks.FERN.getDefaultState(), 2)
+                    .add(Blocks.LARGE_FERN.getDefaultState(), 1)
                     .add(Blocks.GRASS.getDefaultState(), 1))).tries(48).build();
 
     public static final RandomPatchFeatureConfig SHORT_GRASS_CONFIG =
@@ -140,6 +141,18 @@ public final class FeatureConfigHolder {
                     .add(Blocks.LILY_OF_THE_VALLEY.getDefaultState(), 32)
                     .add(Blocks.GRASS.getDefaultState(), 4)
                     .add(Blocks.TALL_GRASS.getDefaultState(), 2))).tries(48).build();
+
+    public static final RandomPatchFeatureConfig DEAD_PLANTS_CONFIG =
+            new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
+                    .add(Blocks.DEAD_BRAIN_CORAL.getStateWithProperties(Blocks.DEAD_BRAIN_CORAL.getDefaultState().with(Properties.WATERLOGGED, false)), 1)
+                    .add(Blocks.DEAD_BRAIN_CORAL_FAN.getStateWithProperties(Blocks.DEAD_BRAIN_CORAL_FAN.getDefaultState().with(Properties.WATERLOGGED, false)), 1)
+                    .add(Blocks.DEAD_HORN_CORAL.getStateWithProperties(Blocks.DEAD_HORN_CORAL.getDefaultState().with(Properties.WATERLOGGED, false)), 1)
+                    .add(Blocks.DEAD_FIRE_CORAL_FAN.getStateWithProperties(Blocks.DEAD_FIRE_CORAL_FAN.getDefaultState().with(Properties.WATERLOGGED, false)), 1)
+                    .add(Blocks.DEAD_FIRE_CORAL.getStateWithProperties(Blocks.DEAD_FIRE_CORAL.getDefaultState().with(Properties.WATERLOGGED, false)), 1)
+                    .add(Blocks.DEAD_HORN_CORAL_FAN.getStateWithProperties(Blocks.DEAD_HORN_CORAL_FAN.getDefaultState().with(Properties.WATERLOGGED, false)), 1)))
+                    .spreadX(10)
+                    .spreadZ(10)
+                    .tries(4).build();
 
     public static final RandomPatchFeatureConfig DESERT_GRASS_CONFIG =
             new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
@@ -255,6 +268,13 @@ public final class FeatureConfigHolder {
     public static final RandomPatchFeatureConfig SURFACE_ROCKS =
             new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
                     .add(Blocks.STONE_BUTTON.getStateWithProperties(Blocks.STONE_BUTTON.getDefaultState().with(StoneButtonBlock.FACE, WallMountLocation.FLOOR)), 1)))
+                    .spreadX(7)
+                    .spreadZ(7)
+                    .tries(4).build();
+
+    public static final RandomPatchFeatureConfig VOLCANIC_SURFACE_ROCKS =
+            new RandomPatchFeatureConfig.Builder(new WeightedBlockStateProvider(pool()
+                    .add(Blocks.POLISHED_BLACKSTONE_BUTTON.getStateWithProperties(Blocks.POLISHED_BLACKSTONE_BUTTON.getDefaultState().with(StoneButtonBlock.FACE, WallMountLocation.FLOOR)), 1)))
                     .spreadX(7)
                     .spreadZ(7)
                     .tries(4).build();

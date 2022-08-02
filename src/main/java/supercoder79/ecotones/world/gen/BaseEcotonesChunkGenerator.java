@@ -502,7 +502,7 @@ public abstract class BaseEcotonesChunkGenerator extends ChunkGenerator {
         int chunkStartZ = chunkZ << 4;
 
 //        for (StructureFeature<?> feature : StructureFeature.LAND_MODIFYING_STRUCTURES) {
-        List<StructureStart> starts = accessor.method_41035(pos, structure -> structure.getTerrainAdaptation() != StructureTerrainAdaptation.NONE);
+        List<StructureStart> starts = accessor.getStructureStarts(pos, structure -> structure.getTerrainAdaptation() != StructureTerrainAdaptation.NONE);
 
         // TODO: reimpl
 //        for (StructureStart feature : starts) {

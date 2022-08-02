@@ -81,10 +81,17 @@ public class LushDesertBiome extends EcotonesBiomeBuilder {
                         BlockStateProvider.of(Blocks.DEAD_BUSH.getDefaultState())).tries(12).build())
                         .decorate(new SpreadDoubleDecorator()).decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
                         .spreadHorizontally()
-                        .repeat(16));
+                        .repeat(4));
 
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                 EcotonesFeatures.RANDOM_PATCH.configure(FeatureConfigHolder.DESERT_GRASS_CONFIG)
+                        .decorate(new Spread32Decorator())
+                        .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
+                        .spreadHorizontally()
+                        .decorate(NoiseThresholdCountPlacementModifier.of(-0.8D, 9, 12)));
+
+        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                EcotonesFeatures.RANDOM_PATCH.configure(FeatureConfigHolder.DEAD_PLANTS_CONFIG)
                         .decorate(new Spread32Decorator())
                         .decorate(HeightmapPlacementModifier.of(Heightmap.Type.MOTION_BLOCKING))
                         .spreadHorizontally()

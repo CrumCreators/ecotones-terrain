@@ -1,6 +1,5 @@
 package supercoder79.ecotones;
 
-import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.util.Identifier;
@@ -11,7 +10,6 @@ import net.minecraft.world.biome.Biome;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import supercoder79.ecotones.blocks.HeadBlocks;
-import supercoder79.ecotones.gen.DataGen;
 import supercoder79.ecotones.util.*;
 import supercoder79.ecotones.util.deco.BlockDecorations;
 import supercoder79.ecotones.util.vein.OreVeins;
@@ -32,10 +30,7 @@ import supercoder79.ecotones.world.surface.EcotonesSurfaces;
 import supercoder79.ecotones.world.tree.trait.EcotonesTreeTraits;
 import supercoder79.ecotones.world.treedecorator.EcotonesTreeDecorators;
 
-import java.util.List;
-
 public final class Ecotones implements ModInitializer {
-	private static final boolean RUN_DATA_GEN = "true".equals(System.getProperty("ECOTONES_RUN_DATAGEN", null));
 
 	// TODO: split out into it's own class
 	public static final Identifier WORLD_TYPE = new Identifier("ecotones", "world_type");
@@ -77,10 +72,6 @@ public final class Ecotones implements ModInitializer {
 
 		CampfireLogHelper.initVanilla();
 		BlockDecorations.init();
-
-		if (RUN_DATA_GEN) {
-			DataGen.run();
-		}
 
 		AiLog.init();
 		AiLog.log("[System] Starting AI log");

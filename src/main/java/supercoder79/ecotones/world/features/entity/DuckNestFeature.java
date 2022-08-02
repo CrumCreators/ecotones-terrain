@@ -38,7 +38,7 @@ public class DuckNestFeature extends EcotonesFeature<DefaultFeatureConfig> {
         if (NestBlock.isValid(world.getBlockState(pos.down()).getBlock())) {
             world.setBlockState(pos, Blocks.DEAD_BRAIN_CORAL_FAN.getStateWithProperties(Blocks.DEAD_BRAIN_CORAL_FAN.getDefaultState().with(Properties.WATERLOGGED, false)), 3);
 
-            int duckCount = 1 + random.nextInt(3);
+            int duckCount = 1;
 
             for (int i = 0; i < duckCount; i++) {
                 int x = pos.getX() + (random.nextInt(16) - random.nextInt(16));

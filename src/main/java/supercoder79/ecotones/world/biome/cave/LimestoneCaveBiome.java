@@ -16,9 +16,9 @@ public class LimestoneCaveBiome extends CaveBiome {
     }
 
     protected LimestoneCaveBiome() {
-        //Changed to Polished Basalt
+        //Changed to Calcite
         this.addFeature(EcotonesConfiguredFeature.wrap(Feature.ORE,
-                        new OreFeatureConfig(OreConfiguredFeatures.BASE_STONE_OVERWORLD, Blocks.POLISHED_BASALT.getDefaultState(), 33))
+                        new OreFeatureConfig(OreConfiguredFeatures.BASE_STONE_OVERWORLD, Blocks.CALCITE.getDefaultState(), 33))
                     .uniformRange(YOffset.fixed(0), YOffset.fixed(48))
                     .spreadHorizontally()
                     .repeat(15).vanilla());
