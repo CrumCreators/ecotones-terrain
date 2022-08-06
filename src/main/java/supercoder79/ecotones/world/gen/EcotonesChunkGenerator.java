@@ -463,29 +463,6 @@ public class EcotonesChunkGenerator extends BaseEcotonesChunkGenerator implement
             int m = 0;
             if (structureAccessor.shouldGenerateStructures()) {
                 if (structureAccessor.shouldGenerateStructures()) {
-//                    for(StructureFeature<?> structureFeature : structuresByStep.getOrDefault(j, Collections.emptyList())) {
-//                        random.setDecoratorSeed(populationSeed, m, j);
-//                        Supplier<String> supplier = () -> (String)registry2.getKey(structureFeature)
-//                                .map(Object::toString)
-//                                .orElseGet(structureFeature::toString);
-//
-//                        try {
-//                            region.setCurrentlyGeneratingStructureName(supplier);
-//                            // FIXME: structures don't work
-////                            structureAccessor.getStructureStarts(chunkSectionPos, structureFeature)
-////                                    .forEach(
-////                                            structureStart -> structureStart.place(
-////                                                    region, structureAccessor, this, random, getBlockBoxForChunk(chunk), chunkPos
-////                                            )
-////                                    );
-//                        } catch (Exception var29) {
-//                            CrashReport crashReport = CrashReport.create(var29, "Feature placement");
-//                            crashReport.addElement("Feature").add("Description", supplier::get);
-//                            throw new CrashException(crashReport);
-//                        }
-//
-//                        ++m;
-//                    }
 
                     for(Structure structure : map.getOrDefault(k, Collections.emptyList())) {
                         random.setDecoratorSeed(populationSeed, m, k);
